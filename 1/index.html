@@ -121,15 +121,15 @@
     <div class="image-container">
         <div>
             <img src="media/cathedral_euclidean_dist_cropped.jpg" alt="Aligning cropped cathedral using euclidean distance">
-            <div class="image-caption">Reconstructed image of a cathedral</div>
+            <div class="image-caption">Reconstructed image of a cathedral with cropping</div>
         </div>
         <div>
             <img src="media/monastery_euclidean_dist_cropped.jpg" alt="Aligning cropped monastery using euclidean distance">
-            <div class="image-caption">Reconstructed image of a monastery</div>
+            <div class="image-caption">Reconstructed image of a monastery with cropping</div>
         </div>
         <div>
             <img src="media/tobolsk_euclidean_dist_cropped.jpg" alt="Aligning cropped Tobolsk using euclidean distance">
-            <div class="image-caption">Reconstructed image of Tobolsk</div>
+            <div class="image-caption">Reconstructed image of Tobolsk with cropping</div>
         </div>
     </div>
 
@@ -138,15 +138,15 @@
     <div class="image-container">
         <div>
             <img src="media/cathedral_cross_corr_cropped.jpg" alt="Aligning cropped cathedral using normalized cross-correlation">
-            <div class="image-caption">Reconstructed image of a cathedral</div>
+            <div class="image-caption">Reconstructed image of a cathedral with cropping</div>
         </div>
         <div>
             <img src="media/monastery_cross_corr_cropped.jpg" alt="Aligning cropped monastery using normalized cross-correlation">
-            <div class="image-caption">Reconstructed image of a monastery</div>
+            <div class="image-caption">Reconstructed image of a monastery with cropping</div>
         </div>
         <div>
             <img src="media/tobolsk_cross_corr_cropped.jpg" alt="Aligning cropped Tobolsk using normalized cross-correlation">
-            <div class="image-caption">Reconstructed image of Tobolsk</div>
+            <div class="image-caption">Reconstructed image of Tobolsk with cropping</div>
         </div>
     </div>
     
@@ -167,6 +167,50 @@
         start by aligning the green channel with the blue channel and then I align the red channel with the blue channel before stacking both aligned images to create 
         the colored image with all three channels. This method greatly sped up the process of aligning the images. I used a pyramid with 4 levels, a window displacement 
         of 20 px and a scaling factor of 1/2. I found that cropping the images and then performing the coarse-to-fine pyramid speedup resulted in the best images. </p>    
+
+    <div class="image-container">
+        <div>
+            <img src="media/church_pyr.jpg" alt="Aligning church using image pyramid and normalized cross-correlation">
+            <div class="image-caption">Reconstructed image of a church</div>
+        </div>
+        <div>
+            <img src="media/church_pyr_cropped.jpg" alt="Aligning cropped church using image pyramid and normalized cross-correlation">
+            <div class="image-caption">Reconstructed image of a church with cropping</div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div>
+            <img src="media/harvesters_pyr.jpg" alt="Aligning harvesters using image pyramid and normalized cross-correlation">
+            <div class="image-caption">Reconstructed image of harvesters</div>
+        </div>
+        <div>
+            <img src="media/harvesters_pyr_cropped.jpg" alt="Aligning cropped harvesters using image pyramid and normalized cross-correlation">
+            <div class="image-caption">Reconstructed image of harvesters with cropping</div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div>
+            <img src="media/icon_pyr.jpg" alt="Aligning icon using image pyramid and normalized cross-correlation">
+            <div class="image-caption">Reconstructed image of icon</div>
+        </div>
+        <div>
+            <img src="media/icon_pyr_cropped.jpg" alt="Aligning cropped icon using image pyramid and normalized cross-correlation">
+            <div class="image-caption">Reconstructed image of icon with cropping</div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div>
+            <img src="media/lady_pyr.jpg" alt="Aligning lady using image pyramid and normalized cross-correlation">
+            <div class="image-caption">Reconstructed image of lady</div>
+        </div>
+        <div>
+            <img src="media/lady_pyr_cropped.jpg" alt="Aligning cropped lady using image pyramid and normalized cross-correlation">
+            <div class="image-caption">Reconstructed image of lady with cropping</div>
+        </div>
+    </div>
     
 </body>
 </html>
