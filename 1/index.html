@@ -3,7 +3,12 @@
 <head>
     <title>Project 1</title>
     <style>
-        body {
+        h1 {
+            font-family: Georgia, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        h2 {
             font-family: Georgia, sans-serif;
             margin: 20px;
             text-align: center;
@@ -11,11 +16,11 @@
     </style>
 </head>
 <body>
-    <h1>Project 1:  Images of the Russian Empire -- Colorizing the Prokudin-Gorskii Photo Collection</h1>
+    <h1> Project 1:  Images of the Russian Empire -- Colorizing the Prokudin-Gorskii Photo Collection </h1>
     
     <h2> Background & Overview (credits: CS180 website) </h2>
 
-    <p>"Sergei Mikhailovich Prokudin-Gorskii (1863-1944) [Сергей Михайлович Прокудин-Горский, to his Russian friends] was a 
+    <p>Sergei Mikhailovich Prokudin-Gorskii (1863-1944) [Сергей Михайлович Прокудин-Горский, to his Russian friends] was a 
         man well ahead of his time. Convinced, as early as 1907, that color photography was the wave of the future, he won Tzar's 
         special permission to travel across the vast Russian Empire and take color photographs of everything he saw including the 
         only color portrait of Leo Tolstoy. And he really photographed everything: people, buildings, landscapes, railroads, bridges... 
@@ -24,19 +29,64 @@
         projectors to be installed in "multimedia" classrooms all across Russia where the children would be able to learn about their 
         vast country. Alas, his plans never materialized: he left Russia in 1918, right after the revolution, never to return again. Luckily, 
         his RGB glass plate negatives, capturing the last years of the Russian Empire, survived and were purchased in 1948 by the Library of 
-        Congress. The LoC has recently digitized the negatives and made them available on-line."</p>
+        Congress. The LoC has recently digitized the negatives and made them available on-line.</p>
 
-    <p>"The goal of this assignment is to take the digitized Prokudin-Gorskii glass plate images and, using image processing techniques, 
+    <p>The goal of this assignment is to take the digitized Prokudin-Gorskii glass plate images and, using image processing techniques, 
         automatically produce a color image with as few visual artifacts as possible. In order to do this, you will need to extract the three 
-        color channel images, place them on top of each other, and align them so that they form a single RGB color image."</p>
+        color channel images, place them on top of each other, and align them so that they form a single RGB color image.</p>
     
     <h2>Aligning Color Channels using Sum of Squared Distances</h2>
+
+    <p>First, I read in the image from the input file and split it into three separate color channels by splitting the image into three equal parts. 
+        I then constructed a function compute_euclidean_distance(image1, image2) which computed the sum of the squared distances between the reference
+        image and the image to be rolled over the reference image. Next, I constructed a function: align_using_euclidean_distance(fixed_img, img, 
+        window_displacement) to align the images using the euclidean distance as a dissimilarity metric. Essentially, I search over all the possible 
+        displacements within a certain range, compute the euclidean distance between the shifted image and the reference image, find the shift that 
+        results in the smallest euclidean distance and return that shift along with the image shifted by that amount. I first start by aligning the green
+        channel with the blue channel and then I align the red channel with the blue channel before stacking both aligned images to create the colored image 
+        with all three channels. I tested out various different values for the size of the window and found that a minimum of 15 px is required but greater 
+        values can be used at the expense of runtime with negligible improvements regarding the alignment. </p>
     
     <h2>Aligning Color Channels using Normalized Cross-Correlation</h2>
+
+    <p>Just as before, I read in the image from the input file and split it into three separate color channels by splitting the image into three equal parts. 
+        I then constructed a function compute_cross_corr_norm(image1, image2) which computed the normalized cross-correlation between the reference
+        image and the image to be rolled over the reference image. Next, I constructed a function: align_using_cross_corr_norm(fixed_img, img, 
+        window_displacement) to align the images using the normalized cross-correlation as a dissimilarity metric. Essentially, I search over all the possible 
+        displacements within a certain range, compute the normalized cross-correlation between the shifted image and the reference image, find the shift that 
+        results in the most correlation and return that shift along with the image shifted by that amount. I first start by aligning the green
+        channel with the blue channel and then I align the red channel with the blue channel before stacking both aligned images to create the colored image 
+        with all three channels. I tested out various different values for the window displacement and found that a minimum of 15 px is required but 
+        greater values can be used at the expense of runtime with negligible improvements regarding the alignment.</p>
+
+    <h2>Euclidean Distance VS. Normalized Cross-Correlation</h2>
+
+    <p>Both functions took a similar amount of time to run and produced similar outputs so there was no advantage in using one over the other in this case.</p> 
     
-    <h2>Cropping user-input amount</h2>
+    <h2>Cropping constant amount</h2>
+
+    <p>In order to improve the alignment of the color channels, I decided to crop the images by cutting off 10% of the image on all four sides of the image. In 
+        order to accomplish this, I used image slicing with the user's input percentage. I created two separate functions: crop_grayscale(img, percentage) and 
+        crop_color(img, percentage) to account for the different sizes of input images, i.e. colored images have a depth of three, whereas grayscale images
+        have a depth of two. </p>
     
     <h2>Coarse-to-fine Pyramid Speedup</h2>
+
+    <p>Using the above approaches to align color channels works fine for smaller images but when we scale up to much larger images, it becomes a very time-consuming 
+        process. To speed up the process, we introduce the concept of image pyramids which significantly decrease the number of displacements that need to be examined 
+        at higher resolutions. To implement this, I created a function: pyramid_align_cc(fixed_img, img, window_displacement, levels, scaling_factor). First, we 
+        initialize displacement_x and displacement_y to zero so that we can cumulatively add the displacements from each level of the image pyramid and return the 
+        final displacement tuple with the first value being the displacement along the x-axis and the second value being the displacement along the y-axis. Then, 
+        we use a for loop to go through the pyramid level by level starting at the lowest resolution image and ending at the highest resolution image. At each level i, 
+        we resize the fixed reference image and the image to be shifted by multiplying their dimensions by the scaling factor to the power of i. Then, I use normalized 
+        cross-correlation as our dissimilarity metric to find the optimal shift with the most correlation. I multiply the x and y values of the optimal shift by the 
+        inverse of the scaling factor to the power of i (given that we were at level i). This rescales the displacement to the original resolution so that the original 
+        image can be shifted accurately. Then, we add the rescaled optimal shift's  x and y values to displacement_x and displacement_y. The last step of this iteration 
+        is to shift the original image by the rescaled optimal shift so that the image is better aligned to the fixed image for the next pyramid level. After we go 
+        through each level of the pyramid, we return the accumulated x and y displacements at the original resolution. In order to align all three color channels, I 
+        start by aligning the green channel with the blue channel and then I align the red channel with the blue channel before stacking both aligned images to create 
+        the colored image with all three channels. This method greatly sped up the process of aligning the images. I used a pyramid with 4 levels, a window displacement 
+        of 20 px and a scaling factor of 1/2. I found that cropping the images and then performing the coarse-to-fine pyramid speedup resulted in the best images. </p>    
     
 </body>
 </html>
