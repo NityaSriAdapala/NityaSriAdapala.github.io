@@ -65,15 +65,15 @@
 
     <div class="image-container">
         <div>
-            <img src="media/cathedral_euclidean_distance.jpg" alt="Aligning cathedral using euclidean distance">
+            <img src="1/media/cathedral_euclidean_distance.jpg" alt="Aligning cathedral using euclidean distance">
             <div class="image-caption">Reconstructed image of a cathedral</div>
         </div>
         <div>
-            <img src="media/monastery_euclidean_distance.jpg" alt="Aligning monastery using euclidean distance">
+            <img src="1/media/monastery_euclidean_distance.jpg" alt="Aligning monastery using euclidean distance">
             <div class="image-caption">Reconstructed image of a monastery</div>
         </div>
         <div>
-            <img src="media/tobolsk_euclidean_distance.jpg" alt="Aligning Tobolsk using euclidean distance">
+            <img src="1/media/tobolsk_euclidean_distance.jpg" alt="Aligning Tobolsk using euclidean distance">
             <div class="image-caption">Reconstructed image of Tobolsk</div>
         </div>
     </div>
@@ -89,6 +89,21 @@
         channel with the blue channel and then I align the red channel with the blue channel before stacking both aligned images to create the colored image 
         with all three channels. I tested out various different values for the window displacement and found that a minimum of 15 px is required but 
         greater values can be used at the expense of runtime with negligible improvements regarding the alignment.</p>
+
+    <div class="image-container">
+        <div>
+            <img src="media/cathedral_cross_corr.jpg" alt="Aligning cathedral using normalized cross-correlation">
+            <div class="image-caption">Reconstructed image of a cathedral</div>
+        </div>
+        <div>
+            <img src="media/monastery_cross_corr.jpg" alt="Aligning monastery using normalized cross-correlation">
+            <div class="image-caption">Reconstructed image of a monastery</div>
+        </div>
+        <div>
+            <img src="media/tobolsk_cross_corr.jpg" alt="Aligning Tobolsk using normalized cross-correlation">
+            <div class="image-caption">Reconstructed image of Tobolsk</div>
+        </div>
+    </div>
 
     <h2>Euclidean Distance VS. Normalized Cross-Correlation</h2>
 
