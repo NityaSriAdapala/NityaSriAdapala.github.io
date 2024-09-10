@@ -13,6 +13,22 @@
             margin: 20px;
             text-align: center;
         }
+        .image-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px;
+        }
+        .image-container img {
+            margin: 0 10px;
+            border: 1px solid #ddd;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+            max-width: 100%;
+            height: auto;
+        }
+        .image-caption {
+            text-align: center;
+            margin: 10px 0;
+        }
     </style>
 </head>
 <body>
@@ -46,6 +62,21 @@
         channel with the blue channel and then I align the red channel with the blue channel before stacking both aligned images to create the colored image 
         with all three channels. I tested out various different values for the size of the window and found that a minimum of 15 px is required but greater 
         values can be used at the expense of runtime with negligible improvements regarding the alignment. </p>
+
+    <div class="image-container">
+        <div>
+            <img src="media/cathedral_euclidean_distance.jpg" alt="Aligning cathedral using euclidean distance">
+            <div class="image-caption">Reconstructed image of a cathedral</div>
+        </div>
+        <div>
+            <img src="media/monastery_euclidean_distance.jpg" alt="Aligning monastery using euclidean distance">
+            <div class="image-caption">Reconstructed image of a monastery</div>
+        </div>
+        <div>
+            <img src="media/tobolsk_euclidean_distance.jpg" alt="Aligning Tobolsk using euclidean distance">
+            <div class="image-caption">Reconstructed image of Tobolsk</div>
+        </div>
+    </div>
     
     <h2>Aligning Color Channels using Normalized Cross-Correlation</h2>
 
