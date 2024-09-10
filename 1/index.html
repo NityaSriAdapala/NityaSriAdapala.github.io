@@ -115,6 +115,40 @@
         order to accomplish this, I used image slicing with the user's input percentage. I created two separate functions: crop_grayscale(img, percentage) and 
         crop_color(img, percentage) to account for the different sizes of input images, i.e. colored images have a depth of three, whereas grayscale images
         have a depth of two. </p>
+
+    <h4>Euclidean Distance: </h4>
+
+    <div class="image-container">
+        <div>
+            <img src="media/cathedral_euclidean_dist_cropped.jpg" alt="Aligning cropped cathedral using euclidean distance">
+            <div class="image-caption">Reconstructed image of a cathedral</div>
+        </div>
+        <div>
+            <img src="media/monastery_euclidean_dist_cropped.jpg" alt="Aligning cropped monastery using euclidean distance">
+            <div class="image-caption">Reconstructed image of a monastery</div>
+        </div>
+        <div>
+            <img src="media/tobolsk_euclidean_dist_cropped.jpg" alt="Aligning cropped Tobolsk using euclidean distance">
+            <div class="image-caption">Reconstructed image of Tobolsk</div>
+        </div>
+    </div>
+
+    <h4>Normalized Cross-Correlation: </h4>
+    
+    <div class="image-container">
+        <div>
+            <img src="media/cathedral_cross_corr_cropped.jpg" alt="Aligning cropped cathedral using normalized cross-correlation">
+            <div class="image-caption">Reconstructed image of a cathedral</div>
+        </div>
+        <div>
+            <img src="media/monastery_cross_corr_cropped.jpg" alt="Aligning cropped monastery using normalized cross-correlation">
+            <div class="image-caption">Reconstructed image of a monastery</div>
+        </div>
+        <div>
+            <img src="media/tobolsk_cross_corr_cropped.jpg" alt="Aligning cropped Tobolsk using normalized cross-correlation">
+            <div class="image-caption">Reconstructed image of Tobolsk</div>
+        </div>
+    </div>
     
     <h2>Coarse-to-fine Pyramid Speedup</h2>
 
