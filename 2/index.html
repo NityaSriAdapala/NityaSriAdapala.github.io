@@ -63,6 +63,51 @@
     <p> First, I showed the partial derivative in x and y of the cameraman image by convolving the image with finite difference operators D_x and D_y.
         To accomplish this, I used convolve2d from the scipy.signal library. Then, I computed and showed the gradient magnitude image. To turn this 
         into an edge image, I binarized the gradient magnitude image by choosing the appropriate threshold, which took a couple tries to get right. </p>
+
+    <div class="image-container">
+        <div>
+            <img src="media/01_cameraman.png" alt="cameraman original image">
+            <div class="image-caption">Cameraman Original Image</div>
+        </div>
+        <div>
+            <img src="media/02_grad_mag_img.png" alt="gradient magnitude image of cameraman">
+            <div class="image-caption">Gradient Magnitude Image of Cameraman</div>
+        </div>
+        <div>
+            <img src="media/03_binarized_grad_mag_img.png" alt="binarized gradient magnitude image of cameraman">
+            <div class="image-caption">Binarized Gradient Magnitude Image of Cameraman</div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div>
+            <img src="media/04_blurred_cameraman.png" alt="cameraman blurred image">
+            <div class="image-caption">Cameraman Blurred Image</div>
+        </div>
+        <div>
+            <img src="media/05_blurred_grad_mag_img.png" alt="gradient magnitude image of blurred cameraman">
+            <div class="image-caption">Gradient Magnitude Image of Blurred Cameraman</div>
+        </div>
+        <div>
+            <img src="media/06_blurred_binarized_grad_mag_img.png" alt="binarized gradient magnitude image of blurred cameraman">
+            <div class="image-caption">Binarized Gradient Magnitude Image of Blurred Cameraman</div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div>
+            <img src="media/04_blurred_cameraman.png" alt="cameraman blurred image">
+            <div class="image-caption">Cameraman Blurred Image</div>
+        </div>
+        <div>
+            <img src="media/07_blurred_grad_mag_img_single_convolution.png" alt="gradient magnitude image of blurred cameraman in a single convolution">
+            <div class="image-caption">Gradient Magnitude Image of Blurred Cameraman in a Single Convolution</div>
+        </div>
+        <div>
+            <img src="media/08_blurred_binarized_grad_mag_img_single_convolution.png" alt="binarized gradient magnitude image of blurred cameraman in a single convolution">
+            <div class="image-caption">Binarized Gradient Magnitude Image of Blurred Cameraman in a Single Convolution</div>
+        </div>
+    </div>
     
     <h2> Derivative of Gaussian (DoG) Filter </h2>
 
