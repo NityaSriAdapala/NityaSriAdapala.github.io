@@ -81,6 +81,13 @@
             <div class="image-caption">Binarized Gradient Magnitude Image of Cameraman</div>
         </div>
     </div>
+    
+    <h2> Derivative of Gaussian (DoG) Filter </h2>
+
+    <p> I noticed that the results with just the finite difference operators D_x and D_y were quite noisy so I used a smoothing operator called the
+        Gaussian filter. I created the gaussian filter by first creating a 1D Gaussian Kernel using cv2.getGaussianKernel(ksize, sigma) and then I took the outer 
+        product with its transpose to get a 2D gaussian kernel. We can create a blurred version of the original image by convolving with this gaussian kernel
+        and repeat the procedure in the previous part. </p>
 
     <div class="image-container">
         <div>
@@ -96,6 +103,11 @@
             <div class="image-caption">Binarized Gradient Magnitude Image of Blurred Cameraman</div>
         </div>
     </div>
+        
+    <p> I see the following differences: </p>
+
+    <p> I now do the same thing with a single convolution instead of two by creating a derivative of gaussian filters. First, I convolve the gaussian with D_x 
+        and D_y. Then, I display the resulting DoG filters as images. I verify that I get the same result as before.</p>
 
     <div class="image-container">
         <div>
@@ -111,20 +123,6 @@
             <div class="image-caption">Binarized Gradient Magnitude Image of Blurred Cameraman in a Single Convolution</div>
         </div>
     </div>
-    
-    <h2> Derivative of Gaussian (DoG) Filter </h2>
-
-    <p> I noticed that the results with just the finite difference operators D_x and D_y were quite noisy so I used a smoothing operator called the
-        Gaussian filter. I created the gaussian filter by first creating a 1D Gaussian Kernel using cv2.getGaussianKernel(ksize, sigma) and then I took the outer 
-        product with its transpose to get a 2D gaussian kernel. We can create a blurred version of the original image by convolving with this gaussian kernel
-        and repeat the procedure in the previous part. </p>
-        
-    <p> I see the following differences: </p>
-
-    <p> I now do the same thing with a single convolution instead of two by creating a derivative of gaussian filters. First, I convolve the gaussian with D_x 
-        and D_y. Then, I display the resulting DoG filters as images. I verify that I get the same result as before.</p>
-
-    
 
     <h2> Image "Sharpening" </h2>
 
@@ -190,7 +188,22 @@
         perception when it is available, but, at a distance, only the low frequency (smooth) part of the signal can be seen. By blending the high frequency portion 
         of one image with the low-frequency portion of another, you get a hybrid image that leads to different interpretations at different distances.</p>
 
-    <p> Here are the sample images I used for debugging: </p> 
+    <p> Here are the sample images I used for debugging and the hybrid image produced from them: </p> 
+
+    <div class="image-container">
+        <div>
+            <img src="media/19_DerekPicture.jpg" alt="Picture of Derek">
+            <div class="image-caption">Image of human Derek</div>
+        </div>
+        <div>
+            <img src="media/20_nutmeg.jpg" alt="Nutmeg the cat">
+            <div class="image-caption">Image of cat Nutmeg</div>
+        </div>
+        <div>
+            <img src="media/21_hybrid_derek_nutmeg.png" alt="Hybrid image of Derek and Nutmeg">
+            <div class="image-caption">Hybrid image of Derek and Nutmeg</div>
+        </div>
+    </div>
 
     <p> In order to create this hybrid image, I wrote code to low-pass filter one image by using a Gaussian filter, high-pass filter the second image by subtracting 
         the blurred image from the original image, and then averaged the two images to produce the final hybrid image. For a low-pass filter, Oliva et al. suggested
@@ -200,6 +213,61 @@
     <p> My favorite result is the hybrid image of Nadal and Federer so I also illustrated the process through frequency analysis. I showed the log magnitude of the 
         Fourier transform of the two input images, the filtered images, and the hybrid image using: plt.imshow(np.log(np.abs(np.fft.fftshift(np.fft.fft2(gray_image)))))</p>
 
+    <div class="image-container">
+        <div>
+            <img src="media/25_federer.jpg" alt="Picture of Federer">
+            <div class="image-caption">Image of Roger Federer</div>
+        </div>
+        <div>
+            <img src="media/26_nadal.jpg" alt="Picture of Nadal">
+            <div class="image-caption">Image of Rafael Nadal</div>
+        </div>
+        <div>
+            <img src="media/27_hybrid_federer_nadal.png" alt="Hybrid image of Federer and Nadal">
+            <div class="image-caption">Hybrid image of Federer and Nadal</div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div>
+            <img src="media/28_federer_before.png" alt="Frequency analysis of Federer original image">
+            <div class="image-caption">Frequency Analaysis of Original Federer Image</div>
+        </div>
+        <div>
+            <img src="media/29_nadal_before.png" alt="Frequency analysis of Nadal original image">
+            <div class="image-caption">Frequency Analaysis of Original Nadal Image</div>
+        </div>
+        <div>
+            <img src="media/30_filtered_federer.ong" alt="Frequency analysis of Federer filtered image">
+            <div class="image-caption">Frequency Analaysis of Filtered Federer Image</div>
+        </div>
+        <div>
+            <img src="media/31_filered_nadal.png" alt="Frequency analysis of Nadal filtered image">
+            <div class="image-caption">Frequency Analaysis of Filtered Nadal Image</div>
+        </div>
+        <div>
+            <img src="media/32_hybrid.png" alt="Frequency analysis of Hybrid image of Federer and Nadal">
+            <div class="image-caption">Frequency analysis of hybrid image of Federer and Nadal</div>
+        </div>
+    </div>
+    
+    <p> This is an example of a failure case because it is quite difficult to see the tiger: </p>
+    
+    <div class="image-container">
+        <div>
+            <img src="media/22_koala.jpg" alt="Picture of Koala">
+            <div class="image-caption">Image of Koala</div>
+        </div>
+        <div>
+            <img src="media/23_tiger.jpg" alt="Picture of tiger">
+            <div class="image-caption">Image of Tiger</div>
+        </div>
+        <div>
+            <img src="media/24_hybrid_koala_tiger.png" alt="Hybrid image of Koala and Tiger">
+            <div class="image-caption">Hybrid image of Koala and Tiger</div>
+        </div>
+    </div>
+    
     <h2> Gaussian and Laplacian Stacks </h2>
 
     <p> The goal of this part of the assignment is to blend two images seamlessly using multi resolution blending as described in the 1983 paper by Burt and Adelson. 
