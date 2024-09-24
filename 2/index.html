@@ -27,11 +27,13 @@
             display: flex;
             flex-wrap: wrap; 
             gap: 20px; 
+            justify-content: center;
         }
         
         .image-container div {
             flex: 0 0 auto; 
             max-width: 400px; 
+            align-items: center;
         }
         
         .image-container img {
@@ -40,7 +42,22 @@
             width: 100%; 
         }
 
-        .image-container-stacks
+        .image-container-stacks {
+            display: flex;
+            flex-wrap: wrap; 
+            gap: 20px; 
+        }
+
+        .image-container-stacks div {
+            flex: 0 0 auto; 
+            max-width: 600px; 
+        }
+        
+        .image-container-stacks img {
+            height: 450px; 
+            object-fit: cover; 
+            width: 100%; 
+        }
 
         .image-caption {
             text-align: center; 
