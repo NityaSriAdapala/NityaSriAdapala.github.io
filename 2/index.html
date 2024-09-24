@@ -55,15 +55,26 @@
     
     <h2> Introduction </h2>
 
-    <p> </p>
+    <p> This project focusses on first building the intuition needed for 2D convolutions and filtering before using frequencies to sharpen images,
+        combine two images into one, blend two images using multiresolution blending. </p>
 
     <h2> Finite Difference Operator </h2>
 
-    <p> </p>
+    <p> First, I showed the partial derivative in x and y of the cameraman image by convolving the image with finite difference operators D_x and D_y.
+        To accomplish this, I used convolve2d from the scipy.signal library. Then, I computed and showed the gradient magnitude image. To turn this 
+        into an edge image, I binarized the gradient magnitude image by choosing the appropriate threshold, which took a couple tries to get right. </p>
     
     <h2> Derivative of Gaussian (DoG) Filter </h2>
 
-    <p> </p>
+    <p> I noticed that the results with just the finite difference operators D_x and D_y were quite noisy so I used a smoothing operator called the
+        Gaussian filter. I created the gaussian filter by first creating a 1D Gaussian Kernel using cv2.getGaussianKernel(ksize, sigma) and then I took the outer 
+        product with its transpose to get a 2D gaussian kernel. We can create a blurred version of the original image by convolving with this gaussian kernel
+        and repeat the procedure in the previous part. 
+
+What differences do you see?
+Now we can do the same thing with a single convolution instead of two by creating a derivative of gaussian filters. Convolve the gaussian with D_x and D_y and display the resulting DoG filters as images.
+
+Verify that you get the same result as before.</p>
 
     <h2> Image "Sharpening" </h2>
 
