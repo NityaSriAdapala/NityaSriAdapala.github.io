@@ -25,22 +25,24 @@
         }
         .image-container {
             display: flex;
-            justify-content: center;
-            margin: 60px;
-            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
         }
+        
+        .image-container div {
+            flex: 1 1 auto;
+            max-width: 200px;
+        }
+        
         .image-container img {
-            margin: 0 10px;
-            border: 1px solid #ddd;
-            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
-            max-width: 100%;
-            height: auto;
-            align-items: center;
+            height: 150px; 
+            object-fit: cover; 
+            width: 100%;
         }
+        
         .image-caption {
-            margin: 10px 0;
-            padding: 30px;
-            text-align: center;
+            text-align: center; 
+            margin-top: 5px; 
         }
         .scaled-image {
             width: 80%; 
@@ -116,6 +118,19 @@
         Gaussian filter. I created the gaussian filter by first creating a 1D Gaussian Kernel using cv2.getGaussianKernel(ksize, sigma) and then I took the outer 
         product with its transpose to get a 2D gaussian kernel. We can create a blurred version of the original image by convolving with this gaussian kernel
         and repeat the procedure in the previous part. </p>
+        
+    <p> I see the following differences: </p>
+
+    <p> I now do the same thing with a single convolution instead of two by creating a derivative of gaussian filters. First, I convolve the gaussian with D_x 
+        and D_y. Then, I display the resulting DoG filters as images. I verify that I get the same result as before.</p>
+
+    
+
+    <h2> Image "Sharpening" </h2>
+
+    <p> In this part, we will derive the unsharp masking technique. The Gaussian filter is a low pass filter that retains only the low frequencies. Therefore, if 
+        we subtract the blurred version from the original image, we can get the high frequenciea of the image which can make the image look sharper. We combine
+        this all into a single convolution operation which is called the unsharp mask filter. </p>
 
     <div class="image-container">
         <div>
@@ -147,6 +162,8 @@
         </div>
     </div>
 
+    <p> Here is a sharp image that I blurred and then sharpened again: </p>
+
     <div class="image-container">
         <div>
             <img src="media/15_campanile.png" alt="Campanile">
@@ -165,19 +182,6 @@
             <div class="image-caption">Sharpened Campanile with Alpha = 4.0</div>
         </div>
     </div>
-        
-    <p> I see the following differences: </p>
-
-    <p> I now do the same thing with a single convolution instead of two by creating a derivative of gaussian filters. First, I convolve the gaussian with D_x 
-        and D_y. Then, I display the resulting DoG filters as images. I verify that I get the same result as before.</p>
-
-    <h2> Image "Sharpening" </h2>
-
-    <p> In this part, we will derive the unsharp masking technique. The Gaussian filter is a low pass filter that retains only the low frequencies. Therefore, if 
-        we subtract the blurred version from the original image, we can get the high frequenciea of the image which can make the image look sharper. We combine
-        this all into a single convolution operation which is called the unsharp mask filter. </p>
-
-    <p> Here is a sharp image that I blurred and then sharpened again: </p>
 
     <h2> Hybrid Images </h2>
 
