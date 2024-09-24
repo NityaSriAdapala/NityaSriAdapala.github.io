@@ -49,263 +49,37 @@
     </style>
 </head>
 <body>
-    <h1> Project 1:  Images of the Russian Empire - Colorizing the Prokudin-Gorskii Photo Collection </h1>
+    <h1> Project 2: Fun with Filters and Frequencies! </h1>
 
     <h2> NITYA SRI ADAPALA </h2>
     
-    <h2> Background & Overview (credits: CS180 website) </h2>
+    <h2> Introduction </h2>
 
-    <p>Sergei Mikhailovich Prokudin-Gorskii (1863-1944) [Сергей Михайлович Прокудин-Горский, to his Russian friends] was a 
-        man well ahead of his time. Convinced, as early as 1907, that color photography was the wave of the future, he won Tzar's 
-        special permission to travel across the vast Russian Empire and take color photographs of everything he saw including the 
-        only color portrait of Leo Tolstoy. And he really photographed everything: people, buildings, landscapes, railroads, bridges... 
-        thousands of color pictures! His idea was simple: record three exposures of every scene onto a glass plate using a red, a green,
-        and a blue filter. Never mind that there was no way to print color photographs until much later -- he envisioned special 
-        projectors to be installed in "multimedia" classrooms all across Russia where the children would be able to learn about their 
-        vast country. Alas, his plans never materialized: he left Russia in 1918, right after the revolution, never to return again. Luckily, 
-        his RGB glass plate negatives, capturing the last years of the Russian Empire, survived and were purchased in 1948 by the Library of 
-        Congress. The LoC has recently digitized the negatives and made them available on-line. The goal of this assignment is to take the digitized 
-        Prokudin-Gorskii glass plate images and, using image processing techniques, automatically produce a color image with as few visual artifacts 
-        as possible. In order to do this, you will need to extract the three color channel images, place them on top of each other, and align them 
-        so that they form a single RGB color image.</p>
+    <p> </p>
+
+    <h2> Finite Difference Operator </h2>
+
+    <p> </p>
     
-    <h2>Aligning Color Channels using Sum of Squared Distances</h2>
+    <h2> Derivative of Gaussian (DoG) Filter </h2>
 
-    <p>First, I read in the image from the input file and split it into three separate color channels by splitting the image into three equal parts. 
-        I then constructed a function compute_euclidean_distance(image1, image2) which computed the sum of the squared distances between the reference
-        image and the image to be rolled over the reference image. Next, I constructed a function: align_using_euclidean_distance(fixed_img, img, 
-        window_displacement) to align the images using the euclidean distance as a dissimilarity metric. Essentially, I search over all the possible 
-        displacements within a certain range, compute the euclidean distance between the shifted image and the reference image, find the shift that 
-        results in the smallest euclidean distance and return that shift along with the image shifted by that amount. I first start by aligning the green
-        channel with the blue channel and then I align the red channel with the blue channel before stacking both aligned images to create the colored image 
-        with all three channels. I tested out various different values for the size of the window and found that a minimum of 15 px is required but greater 
-        values can be used at the expense of runtime with negligible improvements regarding the alignment. </p>
+    <p> </p>
 
-    <div class="image-container">
-        <div>
-            <img src="media/cathedral_euclidean_dist.jpg" alt="Aligning cathedral using euclidean distance">
-            <div class="image-caption">Reconstructed image of a cathedral G:(1, -1) R:(7, -1)</div>
-        </div>
-        <div>
-            <img src="media/monastery_euclidean_dist.jpg" alt="Aligning monastery using euclidean distance">
-            <div class="image-caption">Reconstructed image of a monastery G:(-6, 0) R:(9, 1)</div>
-        </div>
-        <div>
-            <img src="media/tobolsk_euclidean_dist.jpg" alt="Aligning Tobolsk using euclidean distance">
-            <div class="image-caption">Reconstructed image of Tobolsk G:(3, 2) R:(6, 3)</div>
-        </div>
-    </div>
-    
-    <h2>Aligning Color Channels using Normalized Cross-Correlation</h2>
+    <h2> Image "Sharpening" </h2>
 
-    <p>Just as before, I read in the image from the input file and split it into three separate color channels by splitting the image into three equal parts. 
-        I then constructed a function compute_cross_corr_norm(image1, image2) which computed the normalized cross-correlation between the reference
-        image and the image to be rolled over the reference image. Next, I constructed a function: align_using_cross_corr_norm(fixed_img, img, 
-        window_displacement) to align the images using the normalized cross-correlation as a dissimilarity metric. Essentially, I search over all the possible 
-        displacements within a certain range, compute the normalized cross-correlation between the shifted image and the reference image, find the shift that 
-        results in the most correlation and return that shift along with the image shifted by that amount. I first start by aligning the green
-        channel with the blue channel and then I align the red channel with the blue channel before stacking both aligned images to create the colored image 
-        with all three channels. I tested out various different values for the window displacement and found that a minimum of 15 px is required but 
-        greater values can be used at the expense of runtime with negligible improvements regarding the alignment.</p>
+    <p> </p>
 
-    <div class="image-container">
-        <div>
-            <img src="media/cathedral_cross_corr.jpg" alt="Aligning cathedral using normalized cross-correlation">
-            <div class="image-caption">Reconstructed image of a cathedral G:(1, -1) R:(7, -1)</div>
-        </div>
-        <div>
-            <img src="media/monastery_cross_corr.jpg" alt="Aligning monastery using normalized cross-correlation">
-            <div class="image-caption">Reconstructed image of a monastery G:(-6, 0) R:(9, 1)</div>
-        </div>
-        <div>
-            <img src="media/tobolsk_cross_corr.jpg" alt="Aligning Tobolsk using normalized cross-correlation">
-            <div class="image-caption">Reconstructed image of Tobolsk G:(3, 2) R:(6, 3)</div>
-        </div>
-    </div>
+    <h2> Hybrid Images </h2>
 
-    <h2>Euclidean Distance VS. Normalized Cross-Correlation</h2>
+    <p> </p>
 
-    <p>Both functions took a similar amount of time to run and produced similar outputs so there was no advantage in using one over the other in this case.</p> 
-    
-    <h2>Cropping constant amount</h2>
+    <h2> Gaussian and Laplacian Stacks </h2>
 
-    <p>In order to improve the alignment of the color channels, I decided to crop the images by cutting off 10% of the image on all four sides of the image. In 
-        order to accomplish this, I used image slicing with the user's input percentage. I created two separate functions: crop_grayscale(img, percentage) and 
-        crop_color(img, percentage) to account for the different sizes of input images, i.e. colored images have a depth of three, whereas grayscale images
-        have a depth of two. </p>
+    <p> </p>
 
-    <h4>Euclidean Distance: </h4>
+    <h2> Multiresolution Blending </h2>
 
-    <div class="image-container">
-        <div>
-            <img src="media/cathedral_euclidean_dist_cropped.jpg" alt="Aligning cropped cathedral using euclidean distance">
-            <div class="image-caption">Reconstructed image of a cathedral with cropping \n G:(5, 2) R:(12, 3)  </div>
-        </div>
-        <div>
-            <img src="media/monastery_euclidean_dist_cropped.jpg" alt="Aligning cropped monastery using euclidean distance">
-            <div class="image-caption">Reconstructed image of a monastery with cropping \n G:(-3, 2) R:(3, 2)   </div>
-        </div>
-        <div>
-            <img src="media/tobolsk_euclidean_dist_cropped.jpg" alt="Aligning cropped Tobolsk using euclidean distance">
-            <div class="image-caption">Reconstructed image of Tobolsk with cropping \n G:(3, 3) R:(6, 3)   </div>
-        </div>
-    </div>
-
-    <h4>Normalized Cross-Correlation: </h4>
-    
-    <div class="image-container">
-        <div>
-            <img src="media/cathedral_cross_corr_cropped.jpg" alt="Aligning cropped cathedral using normalized cross-correlation">
-            <div class="image-caption">Reconstructed image of a cathedral with cropping G:(5, 2) R:(12, 3)  </div>
-        </div>
-        <div>
-            <img src="media/monastery_cross_corr_cropped.jpg" alt="Aligning cropped monastery using normalized cross-correlation">
-            <div class="image-caption">Reconstructed image of a monastery with cropping G:(-3, 2) R:(3, 2)   </div>
-        </div>
-        <div>
-            <img src="media/tobolsk_cross_corr_cropped.jpg" alt="Aligning cropped Tobolsk using normalized cross-correlation">
-            <div class="image-caption">Reconstructed image of Tobolsk with cropping G:(3, 3) R:(6, 3)   </div>
-        </div>
-    </div>
-    
-    <h2>Coarse-to-fine Pyramid Speedup</h2>
-
-    <p>Using the above approaches to align color channels works fine for smaller images but when we scale up to much larger images, it becomes a very time-consuming 
-        process. To speed up the process, we introduce the concept of image pyramids which significantly decrease the number of displacements that need to be examined 
-        at higher resolutions. To implement this, I created a function: pyramid_align_cc(fixed_img, img, window_displacement, levels, scaling_factor). First, we 
-        initialize displacement_x and displacement_y to zero so that we can cumulatively add the displacements from each level of the image pyramid and return the 
-        final displacement tuple with the first value being the displacement along the x-axis and the second value being the displacement along the y-axis. Then, 
-        we use a for loop to go through the pyramid level by level starting at the lowest resolution image and ending at the highest resolution image. At each level i, 
-        we resize the fixed reference image and the image to be shifted by multiplying their dimensions by the scaling factor to the power of i. Then, I use normalized 
-        cross-correlation as our dissimilarity metric to find the optimal shift with the most correlation. I multiply the x and y values of the optimal shift by the 
-        inverse of the scaling factor to the power of i (given that we were at level i). This rescales the displacement to the original resolution so that the original 
-        image can be shifted accurately. Then, we add the rescaled optimal shift's  x and y values to displacement_x and displacement_y. The last step of this iteration 
-        is to shift the original image by the rescaled optimal shift so that the image is better aligned to the fixed image for the next pyramid level. After we go 
-        through each level of the pyramid, we return the accumulated x and y displacements at the original resolution. In order to align all three color channels, I 
-        start by aligning the green channel with the blue channel and then I align the red channel with the blue channel before stacking both aligned images to create 
-        the colored image with all three channels. This method greatly sped up the process of aligning the images. I used a pyramid with 4 levels, a window displacement 
-        of 20 px and a scaling factor of 1/2. I found that cropping the images and then performing the coarse-to-fine pyramid speedup resulted in the best images. </p>    
-
-    <div class="image-container">
-        <div>
-            <img src="media/church_pyr.jpg" alt="Aligning church using image pyramid and normalized cross-correlation" class="scaled-image">
-            <div class="image-caption">Reconstructed image of a church G:(0, -6) R:(52, -6)</div>
-        </div>
-        <div>
-            <img src="media/church_pyr_cropped.jpg" alt="Aligning cropped church using image pyramid and normalized cross-correlation">
-            <div class="image-caption">Reconstructed image of a church with cropping G:(24, 4) R:(58, -4)</div>
-        </div>
-    </div>
-
-    <div class="image-container">
-        <div>
-            <img src="media/harvesters_pyr.jpg" alt="Aligning harvesters using image pyramid and normalized cross-correlation" class="scaled-image">
-            <div class="image-caption">Reconstructed image of harvesters G:(118, -4) R:(120, 8)</div>
-        </div>
-        <div>
-            <img src="media/harvesters_pyr_cropped.jpg" alt="Aligning cropped harvesters using image pyramid and normalized cross-correlation">
-            <div class="image-caption">Reconstructed image of harvesters with cropping G:(60, 16) R:(124, 14)</div>
-        </div>
-    </div>
-
-    <div class="image-container">
-        <div>
-            <img src="media/icon_pyr.jpg" alt="Aligning icon using image pyramid and normalized cross-correlation" class="scaled-image">
-            <div class="image-caption">Reconstructed image of icon G:(42, 16) R:(90, 22)</div>
-        </div>
-        <div>
-            <img src="media/icon_pyr_cropped.jpg" alt="Aligning cropped icon using image pyramid and normalized cross-correlation">
-            <div class="image-caption">Reconstructed image of icon with cropping G:(40, 16) R:(90, 22)</div>
-        </div>
-    </div>
-
-    <div class="image-container">
-        <div>
-            <img src="media/lady_pyr.jpg" alt="Aligning lady using image pyramid and normalized cross-correlation" class="scaled-image">
-            <div class="image-caption">Reconstructed image of lady G:(56, -6) R:(122, -16)</div>
-        </div>
-        <div>
-            <img src="media/lady_pyr_cropped.jpg" alt="Aligning cropped lady using image pyramid and normalized cross-correlation">
-            <div class="image-caption">Reconstructed image of lady with cropping G:(50, 8) R:(112, 12)</div>
-        </div>
-    </div>
-
-    <div class="image-container">
-        <div>
-            <img src="media/melons_pyr.jpg" alt="Aligning melons using image pyramid and normalized cross-correlation" class="scaled-image">
-            <div class="image-caption">Reconstructed image of melons G:(82, 4) R:(176, 8)</div>
-        </div>
-        <div>
-            <img src="media/melons_pyr_cropped.jpg" alt="Aligning cropped melons using image pyramid and normalized cross-correlation">
-            <div class="image-caption">Reconstructed image of melons with cropping G:(82, 10) R:(178, 12)</div>
-        </div>
-    </div>
-
-    <div class="image-container">
-        <div>
-            <img src="media/onion_church_pyr.jpg" alt="Aligning onion_church using image pyramid and normalized cross-correlation" class="scaled-image">
-            <div class="image-caption">Reconstructed image of onion_church G:(52, 22) R:(108, 0)</div>
-        </div>
-        <div>
-            <img src="media/onion_church_pyr_cropped.jpg" alt="Aligning cropped onion_church using image pyramid and normalized cross-correlation">
-            <div class="image-caption">Reconstructed image of onion_church with cropping G:(52, 26) R:(108, 36)</div>
-        </div>
-    </div>
-
-    <div class="image-container">
-        <div>
-            <img src="media/sculpture_pyr.jpg" alt="Aligning sculpture using image pyramid and normalized cross-correlation" class="scaled-image">
-            <div class="image-caption">Reconstructed image of sculpture G:(32, -10) R:(140, -26)</div>
-        </div>
-        <div>
-            <img src="media/sculpture_pyr_cropped.jpg" alt="Aligning cropped sculpture using image pyramid and normalized cross-correlation">
-            <div class="image-caption">Reconstructed image of sculpture with cropping G:(34, -10) R:(140, -26)</div>
-        </div>
-    </div>
-
-    <div class="image-container">
-        <div>
-            <img src="media/emir_pyr.jpg" alt="Aligning emir using image pyramid and normalized cross-correlation" class="scaled-image">
-            <div class="image-caption">Reconstructed image of emir G:(-4, 8) R:(106, 18)</div>
-        </div>
-        <div>
-            <img src="media/emir_pyr_cropped.jpg" alt="Aligning cropped emir using image pyramid and normalized cross-correlation">
-            <div class="image-caption">Reconstructed image of emir with cropping G:(48, 24) R:(94, -388)</div>
-        </div>
-    </div>
-
-    <div class="image-container">
-        <div>
-            <img src="media/self_portrait_pyr.jpg" alt="Aligning self portrait using image pyramid and normalized cross-correlation" class="scaled-image">
-            <div class="image-caption">Reconstructed image of self portrait G:(50, -2) R:(130, -4)</div>
-        </div>
-        <div>
-            <img src="media/self_portrait_pyr_cropped.jpg" alt="Aligning cropped self portrait using image pyramid and normalized cross-correlation">
-            <div class="image-caption">Reconstructed image of self portrait with cropping G:(78, 28) R:(176, 36)</div>
-        </div>
-    </div>
-
-    <div class="image-container">
-        <div>
-            <img src="media/three_generations_pyr.jpg" alt="Aligning three generations using image pyramid and normalized cross-correlation" class="scaled-image">
-            <div class="image-caption">Reconstructed image of three generations G:(52, 4) R:(108, 8)</div>
-        </div>
-        <div>
-            <img src="media/three_generations_pyr_cropped.jpg" alt="Aligning cropped three generations using image pyramid and normalized cross-correlation">
-            <div class="image-caption">Reconstructed image of three generations with cropping G:(54, 14) R:(112, 10)</div>
-        </div>
-    </div>
-
-    <div class="image-container">
-        <div>
-            <img src="media/train_pyr.jpg" alt="Aligning train using image pyramid and normalized cross-correlation" class="scaled-image">
-            <div class="image-caption">Reconstructed image of train G:(110, -8) R:(108, 0)</div>
-        </div>
-        <div>
-            <img src="media/train_pyr_cropped.jpg" alt="Aligning cropped train using image pyramid and normalized cross-correlation">
-            <div class="image-caption">Reconstructed image of train with cropping G:(42, 4) R:(88, 32)</div>
-        </div>
-    </div>
+    <p> </p>
     
 </body>
 </html>
