@@ -39,7 +39,7 @@
         }
         
         .image-container img {
-            height: 300px; 
+            height: 600px; 
             object-fit: cover; 
             width: 100%; 
         }
@@ -243,7 +243,7 @@
             <div class="image-caption">Frequency Analaysis of Original Nadal Image</div>
         </div>
         <div>
-            <img src="media/30_filtered_federer.ong" alt="Frequency analysis of Federer filtered image">
+            <img src="media/30_filtered_federer.png" alt="Frequency analysis of Federer filtered image">
             <div class="image-caption">Frequency Analaysis of Filtered Federer Image</div>
         </div>
         <div>
@@ -280,6 +280,8 @@
         seperately at each band of image frequencies, resulting in a much smoother seam. First, I create and visualize the Gaussian and Laplacian stacks and using the 
         stacks, I blend together images. Therefore, for this part I implemented the Gaussian and Laplacian stacks, which are similar to pyramids but without the 
         downsampling. This will prepare me for the next step for Multi-resolution blending. </p>
+
+    
 
     <h2> Multiresolution Blending </h2>
 
