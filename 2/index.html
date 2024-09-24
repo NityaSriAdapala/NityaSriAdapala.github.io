@@ -24,36 +24,32 @@
             padding: 10px;
         }
         .image-container {
-            display: flex; 
-            flex-wrap: wrap; 
-            gap: 10px;
-            justify-content: center; 
+            display: flex; /* Use flexbox to align items */
+            flex-wrap: wrap; /* Allow wrapping */
+            gap: 10px; /* Optional: Add space between images */
         }
         
         .image-container div {
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            flex: 1 1 auto;
-            max-width: 700px; 
+            flex: 1 1 auto; /* Allow items to grow/shrink */
+            max-width: 200px; /* Optional: Set a max width */
         }
         
         .image-container img {
-            height: 600px; 
-            object-fit: cover; 
-            width: 100%; 
+            height: 150px; /* Set a uniform height for all images */
+            object-fit: cover; /* Ensure images maintain aspect ratio and fill the space */
+            width: 100%; /* Make images responsive */
         }
 
+        .image-caption {
+            text-align: center; /* Center the caption text */
+            margin-top: 5px; /* Add some space above the caption */
+        }
+        
         .image-container-2 img {
             height: 600px; 
             object-fit: cover; 
             width: 80%; 
-        }
-        
-        .image-caption {
-            text-align: center; 
-            margin-top: 5px; 
-        }
+        }    
         
         .scaled-image {
             width: 80%; 
@@ -335,11 +331,13 @@
             <div class="image-caption">Regular Vertical Seam Mask</div>
         </div>
         <div>
-            <img src="media/40_gauss_stack_mask_orapple" alt="Picture of Orange">
-            <div class="image-caption">Image of Orange</div>
+            <img src="media/40_gauss_stack_mask_orapple" alt="Gaussian stack of Mask">
+            <div class="image-caption">Gaussian Stack of Mask</div>
         </div>
     </div>
 
+41_laplacian_stack_hybrid_orapple
+    
     <h2> Multiresolution Blending </h2>
 
     <p> In this part, we will mainly focus on blending two images together. First, I wrote some code to use my Gaussian and Laplacian stacks from the previous part to 
