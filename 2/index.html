@@ -73,8 +73,8 @@
     <h2> Finite Difference Operator </h2>
     <hr class="rounded">
 
-    <p> First, I showed the partial derivative in x and y of the cameraman image by convolving the image with finite difference operators D_x and D_y.
-        D_x = [[1, -1]] and D_y = [[1],[-1]] To compute the partial derivatives d_x and d_y, I used convolve2d from the scipy.signal library. Then, I 
+    <p> First, I showed the partial derivative in x and y of the cameraman image by convolving the image with finite difference operators D_x = [[1, -1]] and 
+        D_y = [[1],[-1]] To compute the partial derivatives d_x and d_y, I used convolve2d from the scipy.signal library. Then, I 
         computed and showed the gradient magnitude image using this formula: np.sqrt(d_x ** 2 + d_y ** 2). Essentially, I computed the square root of 
         the sum of the squares of the partial derivatives. To turn this into an edge image, I binarized the gradient magnitude image by choosing  
         an appropriate threshold of 0.33 and setting every value above the threshold to be 1 and every value below or equal to the threshold to be 0. </p>
