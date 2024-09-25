@@ -300,9 +300,10 @@
         seperately at each band of image frequencies, resulting in a much smoother seam. First, I need to create and visualize the Gaussian and Laplacian stacks and 
         then using the stacks, I need to blend together images. Firstly, for this part I need to implement the Gaussian and Laplacian stacks, which are similar to 
         pyramids but without the downsampling. In order to build the Gaussian stack, I use a for loop to iterate through each level and produce an image that is 
-        blurrier than the previous level using a 2D Gaussian filter. In order to build the Laplacian stack, I use a for loop to iterate (levels - 1) times, each time 
-        producing an image that is equaivalent to subtracting the blurrier image at the next level from the image at the current level. Constructing the Laplacian 
-        stacks will prepare me for the next step of Multi-resolution blending in the next section.  </p>
+        blurrier than the previous level using a 2D Gaussian filter. As a result, the higher the level, the more blurry the image is. In order to build the Laplacian 
+        stack, I use a for loop to iterate (levels - 1) times, each time producing an image that is equaivalent to subtracting the blurrier image at the next level 
+        from the image at the current level. The last level of the Laplacian stack is the same as the last level of the Gaussian stack. Constructing the Gaussian and 
+        Laplacian stacks will prepare me for the next step of Multi-resolution blending in the next section.  </p>
 
     <div class="image-container">
         <div>
@@ -345,8 +346,10 @@
     
     <h2> Multiresolution Blending </h2>
 
-    <p> In this part, we will mainly focus on blending two images together. First, I wrote some code to use my Gaussian and Laplacian stacks from the previous part to 
-        blend the images together. </p>
+    <p> In this part, we will mainly focus on blending two images together. After constructing the Gaussian and Laplacian stacks for the two images, we need to
+        construct the Gaussian stack for the mask which will help blur the seam between the two images. Then, in order to create the blended image, I use this 
+        formula: blended = (1 - gaussian_stack_mask) * laplacian_stack_apple + gaussian_stack_mask * laplacian_stack_orange. This creates a Laplacian stack 
+        for the hybrid image so then we need to add all the layers together to get the final blended image. </p>
 
     <p> Here are the sample images I used for debugging: </p>
 
@@ -383,7 +386,7 @@
         </div>
     </div>
 
-    <p> Here are my own blended images: </p>
+    <p> Exploring my own examples of multiresolution blending </p>
 
     <h3> SUN + MOON </h3>
 
