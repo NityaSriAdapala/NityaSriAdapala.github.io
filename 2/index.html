@@ -53,7 +53,7 @@
             height: auto;  
         }
         hr.rounded {
-          border-top: 8px solid #bbb;
+          border-top: 4px solid #fff;
           border-radius: 5px;
         }
         
@@ -63,15 +63,15 @@
     <h1> Project 2: Fun with Filters and Frequencies! </h1>
 
     <h2> NITYA SRI ADAPALA </h2>
-
-    <hr class="rounded">
     
     <h2> Introduction </h2>
 
     <p> This project focusses on building the intuition needed for 2D convolutions and filtering and then learning how to use frequencies to sharpen images,
         combine two images into one and blend two images using multiresolution blending.</p>
 
+    <hr class="rounded">
     <h2> Finite Difference Operator </h2>
+    <hr class="rounded">
 
     <p> First, I showed the partial derivative in x and y of the cameraman image by convolving the image with finite difference operators D_x and D_y.
         D_x = [[1, -1]] and D_y = [[1],[-1]] To compute the partial derivatives d_x and d_y, I used convolve2d from the scipy.signal library. Then, I 
@@ -95,8 +95,8 @@
     </div>
 
     <hr class="rounded">
-    
     <h2> Derivative of Gaussian (DoG) Filter </h2>
+    <hr class="rounded">
 
     <p> I noticed that the results with just the finite difference operators D_x and D_y were quite noisy so I used a smoothing operator called the
         Gaussian filter. I created the Gaussian filter by first creating a 1D Gaussian Kernel using cv2.getGaussianKernel(ksize, sigma) with ksize = 10 
@@ -150,8 +150,8 @@
     </div>
 
     <hr class="rounded">
-
     <h2> Image "Sharpening" </h2>
+    <hr class="rounded">
 
     <p> In this part, we will derive the unsharp masking technique. The Gaussian filter is a low pass filter that retains only the low frequencies. Therefore, if 
         we subtract the blurred version from the original image, we can get the high frequenciea of the image which can make the image look sharper. We combine
@@ -213,8 +213,8 @@
     </div>
 
     <hr class="rounded">
-
     <h2> Hybrid Images </h2>
+    <hr class="rounded">
 
     <p> The goal of this part of the assignment is to create hybrid images using the approach described in the SIGGRAPH 2006 paper by Oliva, Torralba, and Schyns.
         Hybrid images are static images that change in interpretation as a function of the viewing distance. The basic idea is that high frequency tends to dominate 
@@ -306,9 +306,9 @@
     </div>
 
     <hr class="rounded">
-    
     <h2> Gaussian and Laplacian Stacks </h2>
-
+    <hr class="rounded">
+    
     <p> The goal of this part of the assignment is to blend two images seamlessly using multi resolution blending as described in the 1983 paper by Burt and Adelson. 
         An image spline is a smooth seam joining two image together by gently distorting them. Multiresolution blending computes a gentle seam between the two images 
         seperately at each band of image frequencies, resulting in a much smoother seam. First, I need to create and visualize the Gaussian and Laplacian stacks and 
@@ -359,8 +359,8 @@
     </div>
 
     <hr class="rounded">
-    
     <h2> Multiresolution Blending </h2>
+    <hr class="rounded">
 
     <p> In this part, we will mainly focus on blending two images together. After constructing the Gaussian and Laplacian stacks for the two images, we need to
         construct the Gaussian stack for the mask which will help blur the seam between the two images. Then, in order to create the blended image, I use this 
@@ -403,9 +403,7 @@
     </div>
 
     <hr class="rounded">
-
     <h2> Exploring my own examples of multiresolution blending </h2>
-
     <hr class="rounded">
     
     <h3> SUN + MOON </h3>
