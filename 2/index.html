@@ -23,6 +23,11 @@
             margin: 20px;
             padding: 10px;
         }
+        ul {
+            font-family: Georgia, sans-serif;
+            margin: 20px;
+            padding: 10px;
+        }
         .image-container {
             display: flex;
             justify-content: center;
@@ -106,8 +111,8 @@
         </div>
     </div>
         
-    <p> I see the following differences: </p>
     <ul>
+        <p> I see the following differences: </p>
         <li> The gradient magnitude image of the blurred image is duller than the gradient magnitude image of the original image.It is harder to see the outline 
              of the cameraman because the brightness is so low. </li>
         <li> The binarized gradient magnitude image of the blurred image has thicker lines for the edges than the binarized gradient magnitude image of the 
@@ -226,8 +231,7 @@
         using a standard 2D Gaussian filter. For a high-pass filter, they suggest using the impulse filter minus the Gaussian filter (which can be computed by 
         subtracting the Gaussian-filtered image from the original). I chose the cutoff-frequency of each filter by doing some experimentation. </p>
         
-    <p> My favorite result is the hybrid image of Nadal and Federer so I also illustrated the process through frequency analysis. I showed the log magnitude of the 
-        Fourier transform of the two input images, the filtered images, and the hybrid image using: plt.imshow(np.log(np.abs(np.fft.fftshift(np.fft.fft2(gray_image)))))</p>
+    <p> Here, I combine Nadal and Federer into a hybrid image. At closer distances, you see Nadal but at further distances you see Federer. </p>
 
     <div class="image-container">
         <div>
@@ -243,6 +247,9 @@
             <div class="image-caption">Hybrid image of Federer and Nadal</div>
         </div>
     </div>
+
+    <p> My favorite result is this hybrid image of Nadal and Federer so I also illustrated the process through frequency analysis. I showed the log magnitude of the 
+        Fourier transform of the two input images, the filtered images, and the hybrid image using: plt.imshow(np.log(np.abs(np.fft.fftshift(np.fft.fft2(gray_image)))))</p>
 
     <div class="image-container">
         <div>
@@ -267,7 +274,9 @@
         </div>
     </div>
     
-    <p> This is an example of a failure case because it is quite difficult to see the tiger: </p>
+    <p> Here is an example of a failure case. I tried to combine a koala and a tiger but it is quite difficult to see the tiger at close distances since the koala 
+        dominates the image. Maybe I could try using color to enhance the effect and instead of choosing a tiger, maybe I should've chosen something that is more 
+        similar in shape to a koala. </p>
     
     <div class="image-container">
         <div>
@@ -288,9 +297,12 @@
 
     <p> The goal of this part of the assignment is to blend two images seamlessly using multi resolution blending as described in the 1983 paper by Burt and Adelson. 
         An image spline is a smooth seam joining two image together by gently distorting them. Multiresolution blending computes a gentle seam between the two images 
-        seperately at each band of image frequencies, resulting in a much smoother seam. First, I create and visualize the Gaussian and Laplacian stacks and using the 
-        stacks, I blend together images. Therefore, for this part I implemented the Gaussian and Laplacian stacks, which are similar to pyramids but without the 
-        downsampling. This will prepare me for the next step for Multi-resolution blending. </p>
+        seperately at each band of image frequencies, resulting in a much smoother seam. First, I need to create and visualize the Gaussian and Laplacian stacks and 
+        then using the stacks, I need to blend together images. Firstly, for this part I need to implement the Gaussian and Laplacian stacks, which are similar to 
+        pyramids but without the downsampling. In order to build the Gaussian stack, I use a for loop to iterate through each level and produce an image that is 
+        blurrier than the previous level using a 2D Gaussian filter. In order to build the Laplacian stack, I use a for loop to iterate (levels - 1) times, each time 
+        producing an image that is equaivalent to subtracting the blurrier image at the next level from the image at the current level. Constructing the Laplacian 
+        stacks will prepare me for the next step of Multi-resolution blending in the next section.  </p>
 
     <div class="image-container">
         <div>
