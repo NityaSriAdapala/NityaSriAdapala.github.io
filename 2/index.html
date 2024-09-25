@@ -58,13 +58,15 @@
     <h2> Introduction </h2>
 
     <p> This project focusses on first building the intuition needed for 2D convolutions and filtering before using frequencies to sharpen images,
-        combine two images into one, blend two images using multiresolution blending. </p>
+        combine two images into one and blend two images using multiresolution blending. First, we </p>
 
     <h2> Finite Difference Operator </h2>
 
     <p> First, I showed the partial derivative in x and y of the cameraman image by convolving the image with finite difference operators D_x and D_y.
-        To accomplish this, I used convolve2d from the scipy.signal library. Then, I computed and showed the gradient magnitude image. To turn this 
-        into an edge image, I binarized the gradient magnitude image by choosing the appropriate threshold, which took a couple tries to get right. </p>
+        D_x = [[1, -1]] and D_y = [[1],[-1]] To compute the partial derivatives d_x and d_y, I used convolve2d from the scipy.signal library. Then, I 
+        computed and showed the gradient magnitude image using this formula: np.sqrt(d_x ** 2 + d_y ** 2). Essentially, I computed the square root of 
+        the sum of the squares of the partial derivatives. To turn this into an edge image, I binarized the gradient magnitude image by choosing  
+        an appropriate threshold of 0.33 and setting every value above the threshold to be 1 and every value below or equal to the threshold to be 0. </p>
 
     <div class="image-container">
         <div>
@@ -84,9 +86,10 @@
     <h2> Derivative of Gaussian (DoG) Filter </h2>
 
     <p> I noticed that the results with just the finite difference operators D_x and D_y were quite noisy so I used a smoothing operator called the
-        Gaussian filter. I created the gaussian filter by first creating a 1D Gaussian Kernel using cv2.getGaussianKernel(ksize, sigma) and then I took the outer 
-        product with its transpose to get a 2D gaussian kernel. We can create a blurred version of the original image by convolving with this gaussian kernel
-        and repeat the procedure in the previous part. </p>
+        Gaussian filter. I created the Gaussian filter by first creating a 1D Gaussian Kernel using cv2.getGaussianKernel(ksize, sigma) with ksize = 10 
+        and sigma = 2. Then, I took the outer product with its transpose to get a 2D gaussian kernel. We can create a blurred version of the original 
+        image by convolving it with this gaussian kernel. Once I have the blurred image, I repeat the procedure in the previous part to create the gradient
+        magnitude image and the binarized gradient magnitude image. </p>
 
     <div class="image-container">
         <div>
@@ -104,9 +107,19 @@
     </div>
         
     <p> I see the following differences: </p>
+    <ul>
+        <li> The gradient magnitude image of the blurred image is duller than the gradient magnitude image of the original image.It is harder to see the outline 
+             of the cameraman because the brightness is so low. </li>
+        <li> The binarized gradient magnitude image of the blurred image has thicker lines for the edges than the binarized gradient magnitude image of the 
+             original image. It is easier to see the outline of the cameraman because the outline is so thick and the contrast is so high. The thick line is 
+             also smoother than the thin line shown in the binarized gradient magnitude image of the original image. </li></li>
+        <li> The binarized gradient magnitude image of the blurred image has less noise and is smoother than the binarized gradient magnitude image of the 
+             original image. For example, the flecks of white and other noise in the background (e.g. the grass) is absent. 
+    </ul>
 
-    <p> I now do the same thing with a single convolution instead of two by creating a derivative of gaussian filters. First, I convolve the gaussian with D_x 
-        and D_y. Then, I display the resulting DoG filters as images. I verify that I get the same result as before.</p>
+    <p> To help me build intuition that convolutions are associative, I now do the same thing with a single convolution instead of two by creating a derivative 
+        of Gaussian filters. First, I convolve the Gaussian with D_x and D_y. Then, I display the resulting DoG filters as images. As can be seen, I verify that 
+        I get the same results as in the previous step, therefore proving that convolutions are associative. </p>
 
     <div class="image-container">
         <div>
@@ -127,7 +140,11 @@
 
     <p> In this part, we will derive the unsharp masking technique. The Gaussian filter is a low pass filter that retains only the low frequencies. Therefore, if 
         we subtract the blurred version from the original image, we can get the high frequenciea of the image which can make the image look sharper. We combine
-        this all into a single convolution operation which is called the unsharp mask filter. </p>
+        this all into a single convolution operation which is called the unsharp mask filter. To construct this filter, I first created a 2D Gaussian kernel 
+        using kernel size 10 and sigma value 2 and convolved it with the original image to produce a blurry image that contains the low frequencies of the image.
+        Then, I subtract the blurry image from the original image to produce an image that contains the high frequencies of the image. To create the sharpened 
+        image, I uses the following formula: original image + (alpha * high frequency image) where increasing alpha increases the number of high frequency images
+        added to the original image, which makes the image sharper. </p>
 
     <div class="image-container">
         <div>
@@ -170,9 +187,6 @@
             <img src="media/16_campanile_sharpened_1.png" alt="Sharpened Campanile with Alpha = 1.0">
             <div class="image-caption">Sharpened Campanile with Alpha = 1.0</div>
         </div>
-    </div>
-    
-    <div class="image-container">
         <div>
             <img src="media/17_campanile_sharpened_2.png" alt="Sharpened Campanile with Alpha = 2.0">
             <div class="image-caption">Sharpened Campanile with Alpha = 2.0</div>
