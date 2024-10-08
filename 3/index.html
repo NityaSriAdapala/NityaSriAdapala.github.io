@@ -201,19 +201,19 @@
 
     <div class="image-container">
         <div>
-            <img src="media/1a.png" alt="Example 1 of Neutral Face">
+            <img src="media/1a.jpg" alt="Example 1 of Neutral Face">
         </div>
         <div>
-            <img src="media/51a.png" alt="Example 2 of Neutral Face">
+            <img src="media/51a.jpg" alt="Example 2 of Neutral Face">
         </div>
         <div>
-            <img src="media/101a.png" alt="Example 3 of Neutral Face">
+            <img src="media/101a.jpg" alt="Example 3 of Neutral Face">
         </div>
         <div>
-            <img src="media/151a.png" alt="Example 4 of Neutral Face">
+            <img src="media/151a.jpg" alt="Example 4 of Neutral Face">
         </div>
         <div>
-            <img src="media/200a.png" alt="Example 5 of Neutral Face">
+            <img src="media/200a.jpg" alt="Example 5 of Neutral Face">
         </div>
     </div>
 
@@ -239,19 +239,19 @@
 
     <div class="image-container">
         <div>
-            <img src="media/1b.png" alt="Example 1 of Smiling Face">
+            <img src="media/1b.jpg" alt="Example 1 of Smiling Face">
         </div>
         <div>
-            <img src="media/51b.png" alt="Example 2 of Smiling Face">
+            <img src="media/51b.jpg" alt="Example 2 of Smiling Face">
         </div>
         <div>
-            <img src="media/101b.png" alt="Example 3 of Smiling Face">
+            <img src="media/101b.jpg" alt="Example 3 of Smiling Face">
         </div>
         <div>
-            <img src="media/151b.png" alt="Example 4 of Smiling Face">
+            <img src="media/151b.jpg" alt="Example 4 of Smiling Face">
         </div>
         <div>
-            <img src="media/200b.png" alt="Example 5 of Smiling Face">
+            <img src="media/200b.jpg" alt="Example 5 of Smiling Face">
         </div>
     </div>
 
@@ -287,7 +287,11 @@
         </div>
         <div>
             <img src="media/24.png" alt="Warped Nitya Smiling">
-            <div class="image-caption">Smiling Nitya Warped to Population Mean</div>
+            <div class="image-caption">Smiling Nitya Warped to Average Smiling Face </div>
+        </div>
+        <div>
+            <img src="media/25.png" alt="Warped Nitya Smiling">
+            <div class="image-caption">Average Smiling Face Warped to Smiling Nitya </div>
         </div>
     </div>
 
@@ -295,7 +299,16 @@
     <h2> Part 5. Caricatures: Extrapolating from the mean </h2>
     <hr class="rounded">
 
-    <p> </p>
+    <p> To produce a caricature of myself, I extrapolated from the population mean that I calculated in the previous task. To accomplish this, I 
+        used the following formula: nitya_caricature_pts = avg_smile_pts + 1.5 * (nitya_pts - avg_smile_pts). Using these caricature points, I 
+        computed the Delaunay triangulation and warped my face, as shown below: </p>
+
+     <div class="image-container">
+        <div>
+            <img src="media/26.png" alt="Caricature of Smiling Nitya">
+            <div class="image-caption">Smiling Nitya Caricature</div>
+        </div>
+    </div>
 
     <hr class="rounded">
     <h2> B & W: Morphing Music Video on Growing up </h2>
