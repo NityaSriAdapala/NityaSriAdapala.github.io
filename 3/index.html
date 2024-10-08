@@ -73,7 +73,14 @@
     <h2> Part 1. Defining Correspondences  </h2>
     <hr class="rounded">
 
-    <p> </p>
+    <p> First, I found an image of myself and an image of my sister. I resized and cropped it so that our faces were more aligned with each other. In order 
+        to morph my face into my sister's face, I first defined pairs of corresponding points on the two images by hand. I found that by increasing
+        the number of key points, the morph becomes smoother. To do this, I used the labelling tool provided by a previous student: https://cal-cs180.github.io/fa23/hw/proj3/tool.html
+        to ensure that there is a consistent labeling of the two faces. I used the same ordering of keypoints in the two faces as well. I then exported the 
+        correspondences into a json file and read them into my jupyter notebook when I needed them. Then, I averaged the two sets of correspondences 
+        (one for each image) to get the correspondences for the midway shape to reduce the likelihood of any potential triangle deformations. Using the
+        points for the midway shape, I calculated the Delaunay triangulation, which is the optimal choice as it does not produce incredibly skinny triangles. 
+        Below, I have shown the Delaunay triangulation overlaying each image: </p>
 
     <hr class="rounded">
     <h2> Part 2. Computing the "Mid-way Face" </h2>
