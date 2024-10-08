@@ -95,10 +95,10 @@
 
     <div class="image-container">
         <div>
-            <img src="media/03a.png" alt="Picture of Mean Key Points and Delaunay Triangulation">
+            <img src="media/03b.png" alt="Picture of Key Points and Delaunay Triangulation">
         </div>
         <div>
-            <img src="media/03b.png" alt="Picture of Key Points and Delaunay Triangulation">
+            <img src="media/03a.png" alt="Picture of Mean Key Points and Delaunay Triangulation">
         </div>
     </div>
 
@@ -106,7 +106,15 @@
     <h2> Part 2. Computing the "Mid-way Face" </h2>
     <hr class="rounded">
 
-    <p> </p>
+    <p> In order to compute the mid-way face of me and my sister, I first computed the average shape by taking the average of each keypoint location in 
+        the two faces: (nitya_pts + neha_pts) / 2. Then, I warped both faces into that average shape and averaged the colors together too. To do this, I
+        first iterated through each triangle in the Delaunay triangulation and generated a mask using a polygon with the points for each triangle. I then 
+        found the corresponding points in the image of my face and the image of my sister's face. I computed the affine matrix that transforms the points 
+        of the triangle in the shape of my face to the points of the triangle in the shape of the midway face before taking its inverse. Similarly, I computed 
+        the affine matrix that transforms the points of the triangle in the shape of my sister's face to the points of the triangle in the shape of the 
+        midway face before taking its inverse as well. I computed the dot products of the inverse affine matrices with the coordinates in the polygon. The 
+        outputs of the dot product calculations are then used to warp the images of me and my sister. Finally, I cross-dissolve the images using this formula:
+        (1 - alpha) * warped_im_nitya + alpha * warped_im_neha. Below, I show you the original images, the warped images and the midway face.</p>
 
     <hr class="rounded">
     <h2> Part 3. The Morph Sequence </h2>
