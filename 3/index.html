@@ -114,7 +114,7 @@
         the affine matrix that transforms the points of the triangle in the shape of my sister's face to the points of the triangle in the shape of the 
         midway face before taking its inverse as well. I computed the dot products of the inverse affine matrices with the coordinates in the polygon. The 
         outputs of the dot product calculations are then used to warp the images of me and my sister. Finally, I cross-dissolve the images using this formula:
-        (1 - alpha) * warped_im_nitya + alpha * warped_im_neha. Below, I show you the original images, the warped images and the midway face.</p>
+        (1 - alpha) * warped_im_nitya + alpha * warped_im_neha. Below, I show you the original images, the warped images and the midway face:</p>
 
     <div class="image-container">
         <div>
@@ -149,8 +149,18 @@
     <h2> Part 3. The Morph Sequence </h2>
     <hr class="rounded">
 
-    <p> </p>
+    <p> In this task, I wrote a function: morphed_im = morph(im1, im2, im1_pts, im2_pts, tri, warp_frac, dissolve_frac) which essentially accomplishes what I had 
+        done in part two above but we can now easily change by how much we want to warp the images and by much we want to cross-dissolve them. Both warp_frac and 
+        dissolve_frac lie in the range [0,1]. They are also the only parameters that vary from frame to frame in the gif. For the very first starting frame, 
+        they will both equal 0, and for the last ending frame, they will both equal 1. Below is a gif showing my face morphing into my sister's face: </p>
 
+    <div class="image-container">
+        <div>
+            <img src="media/07.gif" alt="GIF of Nitya Morphing into Neha">
+            <div class="image-caption">GIF of Nitya Morphing into Neha</div>
+        </div>
+    </div>
+    
     <hr class="rounded">
     <h2> Part 4. The "Mean face" of a population </h2>
     <hr class="rounded">
