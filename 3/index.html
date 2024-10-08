@@ -165,7 +165,87 @@
     <h2> Part 4. The "Mean face" of a population </h2>
     <hr class="rounded">
 
-    <p> For this task, I used the FEI Face Database for research purposes. Should work now</p>
+    <p> For this task, I used the FEI Face Database for research purposes. As mentioned on their website, it is "a Brazilian face database that contains a set of 
+        face images taken between June 2005 and March 2006 at the Artificial Intelligence Laboratory of FEI in São Bernardo do Campo, São Paulo, Brazil." I separated
+        it into two subsets: one for neutral expressions and one for smiling expressions. 
+
+    <div class="image-container">
+        <div>
+            <img src="media/08.png" alt="Neutral Expression">
+            <div class="image-caption">Neutral Expression</div>
+        </div>
+        <div>
+            <img src="media/09.png" alt="Smiling Expression">
+            <div class="image-caption">Smiling Expression</div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div>
+            <img src="media/10.png" alt="Facial Key Points and Delaunay Triangulation">
+            <div class="image-caption">Facial Key Points and Delaunay Triangulation</div>
+        </div>
+    </div>
+        
+    <p> In order to compute the mean face of the population, I first found the average shape of each of the subsets by taking the mean of the correspondences. 
+        I then morphed each of the faces in the dataset into the average shape to get the warped faces. Below are some examples: </p>
+
+    <div class="image-container">
+        <div>
+            <img src="media/11.png" alt="Facial Key Points for Average Shape and Delaunay Triangulation">
+            <div class="image-caption">Facial Key Points for Average Shape and Delaunay Triangulation</div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div>
+            <img src="media/12.png" alt="Example 1 of Neutral Warped Face">
+        </div>
+        <div>
+            <img src="media/15.png" alt="Example 2 of Neutral Warped Face">
+        </div>
+        <div>
+            <img src="media/17.png" alt="Example 3 of Neutral Warped Face">
+        </div>
+        <div>
+            <img src="media/19.png" alt="Example 4 of Neutral Warped Face">
+        </div>
+        <div>
+            <img src="media/21.png" alt="Example 5 of Neutral Warped Face">
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div>
+            <img src="media/13.png" alt="Example 1 of Smiling Warped Face">
+        </div>
+        <div>
+            <img src="media/14.png" alt="Example 2 of Smiling Warped Face">
+        </div>
+        <div>
+            <img src="media/16.png" alt="Example 3 of Smiling Warped Face">
+        </div>
+        <div>
+            <img src="media/18.png" alt="Example 4 of Smiling Warped Face">
+        </div>
+        <div>
+            <img src="media/20.png" alt="Example 5 of Smiling Warped Face">
+        </div>
+    </div>
+        
+    <p> Finally, I computed the average face for each subset by taking the mean of all the warped faces in the corresponding subset.
+        Then, I also warped my own face to the average shape and also warped the average shape to my own face. Below are the images:</p>
+
+    <div class="image-container">
+        <div>
+            <img src="media/22.png" alt="Smiling Expression Population Mean">
+            <div class="image-caption">Population Mean for Smiling Expression</div>
+        </div>
+        <div>
+            <img src="media/23.png" alt="Neutral Expression Population Mean">
+            <div class="image-caption">Population Mean for Neutral Expression</div>
+        </div>
+    </div>
 
     <hr class="rounded">
     <h2> Part 5. Caricatures: Extrapolating from the mean </h2>
