@@ -156,7 +156,7 @@
 
     <div class="image-container">
         <div>
-            <img src="media/07.gif" alt="GIF of Nitya Morphing into Neha">
+            <img src="https://media.githubusercontent.com/media/NityaSriAdapala/NityaSriAdapala.github.io/main/3/media/07.gif" alt="GIF of Nitya Morphing into Neha">
             <div class="image-caption">GIF of Nitya Morphing into Neha</div>
         </div>
     </div>
@@ -165,20 +165,163 @@
     <h2> Part 4. The "Mean face" of a population </h2>
     <hr class="rounded">
 
-    <p> For this task, I used the FEI Face Database for research purposes. Trialling with spongebob</p>
+    <p> For this task, I used the FEI Face Database for research purposes. As mentioned on their website, it is "a Brazilian face database that contains a set of 
+        face images taken between June 2005 and March 2006 at the Artificial Intelligence Laboratory of FEI in São Bernardo do Campo, São Paulo, Brazil." I separated
+        it into two subsets: one for neutral expressions and one for smiling expressions. 
+
+    <div class="image-container">
+        <div>
+            <img src="media/08.jpg" alt="Neutral Expression">
+            <div class="image-caption">Neutral Expression</div>
+        </div>
+        <div>
+            <img src="media/09.jpg" alt="Smiling Expression">
+            <div class="image-caption">Smiling Expression</div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div>
+            <img src="media/10.png" alt="Facial Key Points and Delaunay Triangulation">
+            <div class="image-caption">Facial Key Points and Delaunay Triangulation</div>
+        </div>
+    </div>
+        
+    <p> In order to compute the mean face of the population, I first found the average shape of each of the subsets by taking the mean of the correspondences. 
+        I then morphed each of the faces in the dataset into the average shape to get the warped faces. Below are some examples: </p>
+
+    <div class="image-container">
+        <div>
+            <img src="media/11.png" alt="Facial Key Points for Average Shape and Delaunay Triangulation">
+            <div class="image-caption">Facial Key Points for Average Shape and Delaunay Triangulation</div>
+        </div>
+    </div>
+
+    <h3> Neutral Faces Before and After Warping to Average Face Shape </h3>
+
+    <div class="image-container">
+        <div>
+            <img src="media/1a.jpg" alt="Example 1 of Neutral Face">
+        </div>
+        <div>
+            <img src="media/51a.jpg" alt="Example 2 of Neutral Face">
+        </div>
+        <div>
+            <img src="media/101a.jpg" alt="Example 3 of Neutral Face">
+        </div>
+        <div>
+            <img src="media/151a.jpg" alt="Example 4 of Neutral Face">
+        </div>
+        <div>
+            <img src="media/200a.jpg" alt="Example 5 of Neutral Face">
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div>
+            <img src="media/12.png" alt="Example 1 of Neutral Warped Face">
+        </div>
+        <div>
+            <img src="media/15.png" alt="Example 2 of Neutral Warped Face">
+        </div>
+        <div>
+            <img src="media/17.png" alt="Example 3 of Neutral Warped Face">
+        </div>
+        <div>
+            <img src="media/19.png" alt="Example 4 of Neutral Warped Face">
+        </div>
+        <div>
+            <img src="media/21.png" alt="Example 5 of Neutral Warped Face">
+        </div>
+    </div>
+
+    <h3> Smiling Faces Before and After Warping to Average Face Shape</h3>
+
+    <div class="image-container">
+        <div>
+            <img src="media/1b.jpg" alt="Example 1 of Smiling Face">
+        </div>
+        <div>
+            <img src="media/51b.jpg" alt="Example 2 of Smiling Face">
+        </div>
+        <div>
+            <img src="media/101b.jpg" alt="Example 3 of Smiling Face">
+        </div>
+        <div>
+            <img src="media/151b.jpg" alt="Example 4 of Smiling Face">
+        </div>
+        <div>
+            <img src="media/200b.jpg" alt="Example 5 of Smiling Face">
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div>
+            <img src="media/13.png" alt="Example 1 of Smiling Warped Face">
+        </div>
+        <div>
+            <img src="media/14.png" alt="Example 2 of Smiling Warped Face">
+        </div>
+        <div>
+            <img src="media/16.png" alt="Example 3 of Smiling Warped Face">
+        </div>
+        <div>
+            <img src="media/18.png" alt="Example 4 of Smiling Warped Face">
+        </div>
+        <div>
+            <img src="media/20.png" alt="Example 5 of Smiling Warped Face">
+        </div>
+    </div>
+        
+    <p> Finally, I computed the average face for each subset by taking the mean of all the warped faces in the corresponding subset.
+        Then, I also warped my own face to the average shape and also warped the average shape to my own face. Below are the images:</p>
+
+    <div class="image-container">
+        <div>
+            <img src="media/22.png" alt="Smiling Expression Population Mean">
+            <div class="image-caption">Population Mean for Smiling Expression</div>
+        </div>
+        <div>
+            <img src="media/23.png" alt="Neutral Expression Population Mean">
+            <div class="image-caption">Population Mean for Neutral Expression</div>
+        </div>
+        <div>
+            <img src="media/24.png" alt="Warped Nitya Smiling">
+            <div class="image-caption">Smiling Nitya Warped to Average Smiling Face </div>
+        </div>
+        <div>
+            <img src="media/25.png" alt="Warped Nitya Smiling">
+            <div class="image-caption">Average Smiling Face Warped to Smiling Nitya </div>
+        </div>
+    </div>
 
     <hr class="rounded">
     <h2> Part 5. Caricatures: Extrapolating from the mean </h2>
     <hr class="rounded">
 
-    <p> </p>
+    <p> To produce a caricature of myself, I extrapolated from the population mean that I calculated in the previous task. To accomplish this, I 
+        used the following formula: nitya_caricature_pts = avg_smile_pts + k * (nitya_pts - avg_smile_pts) where k > 1 e.g. below I have used k = 1.5. 
+        Using these caricature points, I computed the Delaunay triangulation and warped my face, as shown below: </p>
+
+     <div class="image-container">
+        <div>
+            <img src="media/26.png" alt="Caricature of Smiling Nitya">
+            <div class="image-caption">Smiling Nitya Caricature</div>
+        </div>
+    </div>
 
     <hr class="rounded">
     <h2> B & W: Morphing Music Video on Growing up </h2>
     <hr class="rounded">
 
-    <p> </p>
+    <p> I also created a morphing music video of my face at different ages (at 6, 11, 12, 13, 16, 17, 18, and 21 yrs old). I accomplished this by 
+        creating multiple gifs and concatenating them together into an mp4 video with some background music.</p>
 
+    <div class="image-container">
+        <video width="427" height="240" controls>
+            <source src="https://media.githubusercontent.com/media/NityaSriAdapala/NityaSriAdapala.github.io/main/3/media/27.mp4" type="video/mp4">
+        </video>
+    </div>
     
 </body>
 </html>
