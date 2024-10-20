@@ -94,7 +94,12 @@
     <h3> Warp the Images </h3>
     <hr class="rounded">
 
-    <p> </p>
+    <p> Now that we have calculated the homography matrix, we can use this homography to warp each image towards the reference image. 
+        First, I find the corners of the image to identify the boundaries of the bounding box before warping. Then, I do a forward warp 
+        of the bounding box and normalize it so that I know the space in which pixels need to be filled. I then find the bounding box of 
+        the final image which is an empty canvas. I copy over image 2 into the final image. Once I've found the polygon in which the final
+        image will be placed, I applied inverse homography to perform a backward warp to produce the final output coordinates. Finally, 
+        I interpolated the pixels in image 1 that will be mapped to each pixel in the output. Below are the resulting images: </p>
 
     <hr class="rounded">
     <h3> Image Rectification </h3>
