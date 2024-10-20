@@ -78,13 +78,17 @@
     <h3> Taking Images </h3>
     <hr class="rounded">
 
-    <p> </p>
+    <p> Below are some images I used in this project: </p>
   
     <hr class="rounded">
     <h3> Recover Homographies </h3>
     <hr class="rounded">
 
-    <p> </p>
+    <p> First, using the online tool provided by the course, I identified correspondence points in each pair of images, where one image is 
+        the image that will be warped onto the reference image and the second image is the reference image. After setting up the overdetermined 
+        linear system of equations, we solve it using least squares. After performing SVD, we get the matrices U, S and V transpose. In order 
+        to minimize the loss function we want the vector that corresponds to the smallest eigenvalue in V transpose, which is the last vector.
+        We then reshape the vector into a 3x3 matrix. This becomes our H matrix.</p>
 
     <hr class="rounded">
     <h3> Warp the Images </h3>
