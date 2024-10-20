@@ -105,7 +105,11 @@
     <h3> Image Rectification </h3>
     <hr class="rounded">
 
-    <p> </p>
+    <p> To ensure that my homography and warping is working correctly, I performed image rectification. I took pictures of things that 
+        I knew were square at an angle so that they weren't square in the image. I then rectified the images by warping the images so
+        that the features become square. First, I selected four points in the original image that would map to a square, which I defined manually,
+        and then I compute the H matrix using these correspondence points. Using this H matrix, we warp the image so that the features become square.
+        The black areas of the image are caused due to the distortion of perspective. Here are the images before and after rectification: </p>
 
     <hr class="rounded">
     <h3> Blend the images into a mosaic </h3>
