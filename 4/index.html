@@ -142,9 +142,99 @@
     <p> Now that we have calculated the homography matrix, we can use this homography to warp each image towards the reference image. 
         First, I find the corners of the image to identify the boundaries of the bounding box before warping. Then, I do a forward warp 
         of the bounding box and normalize it so that I know the space in which pixels need to be filled. I then find the bounding box of 
-        the final image which is an empty canvas. I copy over image 2 into the final image. Once I've found the polygon in which the final
+        the final image, which is an empty canvas. I copy over image 2 into the final image. Once I've found the polygon in which the final
         image will be placed, I applied inverse homography to perform a backward warp to produce the final output coordinates. Finally, 
         I interpolated the pixels in image 1 that will be mapped to each pixel in the output. Below are the resulting images: </p>
+
+    <div class="image-container">
+        <div>
+            <img src="media/10.png" alt="Canvas for Final Image with Hildebrand Center">
+            <div class="image-caption">Canvas for Final Image with Hildebrand Center</div>
+        </div>
+        <div>
+            <img src="media/11.png" alt="Warped Bounding Box of Hildebrand Left">
+            <div class="image-caption">Warped Bounding Box of Hildebrand Left</div>
+        </div>
+        <div>
+            <img src="media/12.png" alt="Hildebrand Left Warped onto Hildebrand Center">
+            <div class="image-caption">Hildebrand Left Warped onto Hildebrand Center</div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div>
+            <img src="media/13.png" alt="Canvas for Final Image with Hildebrand Center">
+            <div class="image-caption">Canvas for Final Image with Hildebrand Center</div>
+        </div>
+        <div>
+            <img src="media/14.png" alt="Warped Bounding Box of Hildebrand Right">
+            <div class="image-caption">Warped Bounding Box of Hildebrand Right</div>
+        </div>
+        <div>
+            <img src="media/15.png" alt="Hildebrand Right Warped onto Hildebrand Center">
+            <div class="image-caption">Hildebrand Right Warped onto Hildebrand Center</div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div>
+            <img src="media/16.png" alt="Canvas for Final Image with Memorial Stadium Center">
+            <div class="image-caption">Canvas for Final Image with Memorial Stadium Center</div>
+        </div>
+        <div>
+            <img src="media/17.png" alt="Warped Bounding Box of Memorial Stadium Left">
+            <div class="image-caption">Warped Bounding Box of Memorial Stadium Left</div>
+        </div>
+        <div>
+            <img src="media/18.png" alt="Memorial Stadium Left Warped onto Memorial Stadium Center">
+            <div class="image-caption">Memorial Stadium Left Warped onto Memorial Stadium Center</div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div>
+            <img src="media/19.png" alt="Canvas for Final Image with Memorial Stadium Center">
+            <div class="image-caption">Canvas for Final Image with Memorial Stadium Center</div>
+        </div>
+        <div>
+            <img src="media/20.png" alt="Warped Bounding Box of Memorial Stadium Right">
+            <div class="image-caption">Warped Bounding Box of Memorial Stadium Right</div>
+        </div>
+        <div>
+            <img src="media/21.png" alt="Memorial Stadium Right Warped onto Memorial Stadium Center">
+            <div class="image-caption">Memorial Stadium Right Warped onto Memorial Stadium Center</div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div>
+            <img src="media/22.png" alt="Canvas for Final Image with Chou Hall Center">
+            <div class="image-caption">Canvas for Final Image with Chou Hall Center</div>
+        </div>
+        <div>
+            <img src="media/23.png" alt="Warped Bounding Box of Chou Hall Left">
+            <div class="image-caption">Warped Bounding Box of Chou Hall Left</div>
+        </div>
+        <div>
+            <img src="media/24.png" alt="Chou Hall Left Warped onto Chou Hall Center">
+            <div class="image-caption">Chou Hall Left Warped onto Chou Hall Center</div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div>
+            <img src="media/25.png" alt="Canvas for Final Image with Chou Hall Center">
+            <div class="image-caption">Canvas for Final Image with Chou Hall Center</div>
+        </div>
+        <div>
+            <img src="media/26.png" alt="Warped Bounding Box of Chou Hall Right">
+            <div class="image-caption">Warped Bounding Box of Chou Hall Right</div>
+        </div>
+        <div>
+            <img src="media/27.png" alt="Chou Hall Right Warped onto Chou Hall Center">
+            <div class="image-caption">Chou Hall Right Warped onto Chou Hall Center</div>
+        </div>
+    </div>
 
     <hr class="rounded">
     <h3> Image Rectification </h3>
