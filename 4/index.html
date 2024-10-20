@@ -131,7 +131,7 @@
 
     <p> First, using the online tool provided by the course, I identified correspondence points in each pair of images, where one image is 
         the image that will be warped onto the reference image and the second image is the reference image. We want to find a 3x3 matrix, H,
-        to compute a projective transformation, as shown on the left image. On the right image, we can see how we can rearrange the equations 
+        to compute a projective transformation, as shown on the left image. On the right image, we see how we can rearrange the equations 
         to solve for our H matrix:
 
         <div class="image-container">
@@ -145,21 +145,21 @@
         </div>
     </div>
         
-        After setting up the overdetermined 
-        linear system of equations, we solve it using least squares. After performing SVD, we get the matrices U, S and V transpose. In order 
-        to minimize the loss function we want the vector that corresponds to the smallest eigenvalue in V transpose, which is the last vector.
-        We then reshape the vector into a 3x3 matrix. This becomes our H matrix.</p>
+        After setting up the overdetermined linear system of equations, we solve it using least squares. After performing SVD, we get the matrices U, 
+        S and V transpose. In order to minimize the loss function, we want the vector that corresponds to the smallest eigenvalue in V transpose, 
+        which is the last vector, since the vectors are ordered in decreasing magnitude. Once we have solved for all the unknown values of the H matrix, 
+        we reshape the 9x1 vector into a 3x3 matrix. This becomes our H matrix. </p>
 
     <hr class="rounded">
     <h3> Warp the Images </h3>
     <hr class="rounded">
 
-    <p> Now that we have calculated the homography matrix, we can use this homography to warp each image towards the reference image. 
-        First, I find the corners of the image to identify the boundaries of the bounding box before warping. Then, I do a forward warp 
-        of the bounding box and normalize it so that I know the space in which pixels need to be filled. I then find the bounding box of 
-        the final image, which is an empty canvas. I copy over image 2 into the final image. Once I've found the polygon in which the final
-        image will be placed, I applied inverse homography to perform a backward warp to produce the final output coordinates. Finally, 
-        I interpolated the pixels in image 1 that will be mapped to each pixel in the output. Below are the resulting images: </p>
+    <p> Now that we have calculated the homography matrix, we can use it to warp each image towards the reference image. 
+        First, I find the corners of the first image to identify the boundaries of the bounding box before warping. Then, I do a forward warp 
+        of the bounding box and normalize it so that I know the space in which the pixels need to be filled. I then find the bounding box of 
+        the final image, which is an empty canvas so I copy over image 2 into the final output. Once I've found the polygon in which the final
+        image will be placed, I applied inverse homography to perform a backward warp to produce the final output coordinates of the warped image 1. 
+        Finally, I interpolated the pixels in image 1 that will be mapped to each pixel in the output. Below are the resulting images: </p>
 
     <div class="image-container">
         <div>
@@ -257,9 +257,12 @@
 
     <p> To ensure that my homography and warping is working correctly, I performed image rectification. I took pictures of things that 
         I knew were square at an angle so that they weren't square in the image. I then rectified the images by warping the images so
-        that the features become square. First, I selected four points in the original image that would map to a square, which I defined manually,
-        and then I compute the H matrix using these correspondence points. Using this H matrix, we warp the image so that the features become square.
-        The black areas of the image are caused due to the distortion of perspective. Here are the images before and after rectification: </p>
+        that the features become square. First, using the online tool, I selected four points in the original image that would map to a square, 
+        which I defined manually, and then I compute the H matrix using these correspondence points. Using this H matrix, we warp the image 
+        so that the features become square. The black areas of the image are caused due to the distortion of perspective. For the moffitt ceiling, I
+        chose four corners of one tile on the ceiling to rectify and as you can see all the tiles in the rectified image are now square. For the campanile,
+        I chose the four corners around the clock face and as you can see, the bounding box around the clock face has become a square. Here are the images 
+        before and after rectification: </p>
 
     <div class="image-container">
         <div>
@@ -287,9 +290,10 @@
     <p> After we checked that the warping works as expected, I proceeded to blend the images seamlessly so that it looks like one image. I do this 
         by first finding the distance transforms for the warped image and the reference image. These distance transforms are calculated by assigning
         each pixel in the region the distance to the nearest edge. The final result is then normalized to get a mask with values ranging from 0 to 1.
-        Below I have shown the visualizations of these distance transforms. I then created a mask such that a pixel's value in the warped image will be taken if its distance transform 
-        in the warped image is larger than its distance transform in the reference image. Using this mask, the warped image and the reference image in the 
-        warped bounding box, I constructed Gaussian and Laplacian stacks similar to Project 2 and blended the two images together seamlessly. </p>
+        Below I have shown the visualizations of these distance transforms. I then created a mask such that a pixel's value in the warped image will be taken
+        if its distance transform in the warped image is larger than its distance transform in the reference image. Using this mask, the warped image 
+        and the reference image in the warped bounding box, I constructed Gaussian and Laplacian stacks similar to Project 2 and blended the two 
+        images together seamlessly to produce the final blended outputs which you see below: </p>
 
     <div class="image-container">
         <div>
