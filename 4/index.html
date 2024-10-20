@@ -130,7 +130,22 @@
     <hr class="rounded">
 
     <p> First, using the online tool provided by the course, I identified correspondence points in each pair of images, where one image is 
-        the image that will be warped onto the reference image and the second image is the reference image. After setting up the overdetermined 
+        the image that will be warped onto the reference image and the second image is the reference image. We want to find a 3x3 matrix, H,
+        to compute a projective transformation, as shown on the left image. On the right image, we can see how we can rearrange the equations 
+        to solve for our H matrix:
+
+        <div class="image-container">
+        <div>
+            <img src="media/57.png" alt="Projective Transformation">
+            <div class="image-caption">Proective Transformation: H • v = v'</div>
+        </div>
+        <div>
+            <img src="media/58.png" alt="Rearranging Equations to Solve for H">
+            <div class="image-caption">Rearranging Equations to Solve for H</div>
+        </div>
+    </div>
+        
+        After setting up the overdetermined 
         linear system of equations, we solve it using least squares. After performing SVD, we get the matrices U, S and V transpose. In order 
         to minimize the loss function we want the vector that corresponds to the smallest eigenvalue in V transpose, which is the last vector.
         We then reshape the vector into a 3x3 matrix. This becomes our H matrix.</p>
