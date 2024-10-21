@@ -132,7 +132,7 @@
     <p> First, using the online tool provided by the course, I identified correspondence points in each pair of images, where one image is 
         the image that will be warped onto the reference image and the second image is the reference image. We want to find a 3x3 matrix, H,
         to compute a projective transformation, as shown on the left image. On the right image, we see how we can rearrange the equations 
-        to solve for our H matrix:
+        to solve for our H matrix: </p>
 
         <div class="image-container">
         <div>
@@ -145,7 +145,7 @@
         </div>
     </div>
         
-        After setting up the overdetermined linear system of equations, we solve it using least squares. After performing SVD, we get the matrices U, 
+    <p> After setting up the overdetermined linear system of equations, we solve it using least squares. After performing SVD, we get the matrices U, 
         S and V transpose. In order to minimize the loss function, we want the vector that corresponds to the smallest eigenvalue in V transpose, 
         which is the last vector, since the vectors are ordered in decreasing magnitude. Once we have solved for all the unknown values of the H matrix, 
         we reshape the 9x1 vector into a 3x3 matrix. This becomes our H matrix. </p>
