@@ -547,6 +547,12 @@
     <h3> Feature Descriptor Extraction </h3>
     <hr class="rounded">
 
+    <p> The feature descriptor extraction is necessary for creating distinctive 8x8 windows of each feature point. By first extracting a 40x40 window around each corner 
+        and downsampling it to 8x8, we naturally blur it to make the descriptor more robust to small pixel variations and noise. Additionally, the bias/gain normalization 
+        step ((patch - mean)/(std)) ensures the descriptor is not affected by lighting differences so therefore we can match features even when one image is brighter or darker 
+        than the other. These normalized 8x8 patches are great, reliable descriptors to help us match corresponding points between images, making the matching process much 
+        more efficient than using raw pixel values. </p>
+
     <div class="image-container">
         <div>
             <img src="media/b19.png" alt="First five patches for Hildebrand Left">
@@ -614,6 +620,14 @@
     <h3> Feature Matching </h3>
     <hr class="rounded">
 
+    <p> For feature matching, I find the corresponding points between two images by comparing their feature descriptors which we computed in the previous section. For each 
+        descriptor in the first image, it computes the Euclidean distances to all the descriptors in the second image, which creates a distance matrix. I wrote a fidn2nn function 
+        which helps find the two nearest neighbours for each descriptor by keeping track of the two smallest distances and their indices. Following Lowe's ratio test from the paper, 
+        I learned that it calculates the ratio between the best and second-best match distances - if this ratio is less than 0.6, it means that the best match is significantly 
+        better than the second best, making it a reliable match. I used 0.6 after consulting Figure 6b in the paper. The Lowe's ratio test was necessary to effectively filter out 
+        ambiguous matches where a descriptor might be similar to various other regions in the other image. The function returns only the confident matches along with their ratio 
+        scores, ensuring we keep only the most distinctive and reliable feature correspondences for any future image stitching steps.</p>
+
     <div class="image-container">
         <div>
             <img src="media/b28.png" alt="Top 20 Feature Matches between Hildebrand Left and Center">
@@ -651,6 +665,8 @@
     <h3> RANSAC </h3>
     <hr class="rounded">
 
+    <p> </p>
+
     <div class="image-container">
         <div>
             <img src="media/b29.png" alt="Inliers of Feature Matches between Hildebrand Left and Center">
@@ -687,6 +703,9 @@
     <hr class="rounded">
     <h3> Final Results </h3>
     <hr class="rounded">
+
+    <p> Using the homography matrix produced by the RANSAC algorithm, I recovered the homographies and repeated the steps in part A to warp image 1 onto image 2 and blend
+        the two images together into a smooth mosaic. Below are the final results of the automatic stitching beside the results of the manual stitching. </p>
 
     <div class="image-container">
         <div>
