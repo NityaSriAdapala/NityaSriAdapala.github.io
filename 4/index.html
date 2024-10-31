@@ -485,12 +485,10 @@
     <hr class="rounded">
 
     <p> ANMS helps distribute feature points more evenly across the image instead of clustering them in highly textured areas like with the Harris Corners. For 
-        image stitching, we need good feature matches across the entire overlap region between images, not just in small clustered areas. If the features are too clustered, 
-        we might miss some important matches in some parts of the overlap area, which can lead to poor homography estimation and failed stitching. ANMS ensures we have 
-        well-distributed features that can capture the geometric relationship between images more reliably. In terms of implementation, I only keep the points that have a 
-        longer distance to strong corner intensities, which allows the points to be evenly distributed. For each point, I find the minimum distance to any other point that
-        is stronger than the threshold, which is the suppression radii. I then sort each point by their suppression radii in descending order from largest to smallest and 
-        keep the top 500 points. Below, you can see the selected points overlaying the respective image. </p>
+        image stitching, we need good feature matches across the entire overlap region between images, not just in small clustered areas. In terms of implementation, I only 
+        keep the points that have a longer distance to strong corner intensities, which allows the points to be evenly distributed. For each point, I find the minimum distance 
+        to any other point that is stronger than the threshold, which is the suppression radii. I then sort each point by their suppression radii in descending order from 
+        largest to smallest and keep the top 500 points. Below, you can see the selected points overlaying the respective image. </p>
 
     <div class="image-container">
         <div>
