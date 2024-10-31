@@ -620,11 +620,10 @@
 
     <p> For feature matching, I find the corresponding points between two images by comparing their feature descriptors which we computed in the previous section. For each 
         descriptor in the first image, it computes the Euclidean distances to all the descriptors in the second image, which creates a distance matrix. I wrote a fidn2nn function 
-        which helps find the two nearest neighbours for each descriptor by keeping track of the two smallest distances and their indices. Following Lowe's ratio test from the paper, 
-        I learned that it calculates the ratio between the best and second-best match distances - if this ratio is less than 0.6, it means that the best match is significantly 
-        better than the second best, making it a reliable match. I used 0.6 after consulting Figure 6b in the paper. The Lowe's ratio test was necessary to effectively filter out 
-        ambiguous matches where a descriptor might be similar to various other regions in the other image. The function returns only the confident matches along with their ratio 
-        scores, ensuring we keep only the most distinctive and reliable feature correspondences for any future image stitching steps.</p>
+        which helps find the two nearest neighbours for each descriptor by keeping track of the two smallest distances and their indices. I learned that the Lowe's ratio test 
+        calculates the ratio between the best and second-best match distances. If this ratio is less than 0.6, it means that the best match is significantly 
+        better than the second best, making it a good match. I used 0.6 after consulting Figure 6b in the paper. The Lowe's ratio test was necessary to effectively filter out 
+        ambiguous matches where a descriptor might be similar to various other similar regions in the other image. </p>
 
     <div class="image-container">
         <div>
