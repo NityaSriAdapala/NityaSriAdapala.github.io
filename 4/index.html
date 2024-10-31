@@ -665,7 +665,11 @@
     <h3> RANSAC </h3>
     <hr class="rounded">
 
-    <p> </p>
+    <p> RANSAC, which stands for Random Sample Consensus, handles outliers in feature matches that could severely affect the least-squares solution. To write the RANSAC algorithm, 
+        I followed the RANSAC loop taught in lecture. Instead of using all of the matches to compute the homography, RANSAC repeatedly samples small random sets of four point 
+        pairs, computes a homography from each sample, and counts how many other points agree with this transformation (inliers).  Once I computed all the inliers, I kept the 
+        largest set of inliers and recomputed the least-squares homography estimate, ransac_H, on all the inliers. RANSAC helps increase the robustness of least-squares when 
+        finding the homography matrix necessary for image stitching in the next and final step. Below are some images with the inliers overlaid: </p>
 
     <div class="image-container">
         <div>
