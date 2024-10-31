@@ -418,9 +418,18 @@
     <h2> Part B: Feature Matching for Autostitching </h2>
     <hr class="rounded">
 
+    <p> In part B of this project, we create a system for automatically stitching images into a mosaic by learning how to read and implement the research paper found
+        at this link: https://inst.eecs.berkeley.edu/~cs180/fa24/hw/proj4/Papers/MOPS.pdf. </p>
+
     <hr class="rounded">
     <h3> Harris Corner Detection </h3>
     <hr class="rounded">
+
+    <p> First, in order to detect the features, we need to identify the corners first because they are localized, distinct and can be found in two images of the same scene.
+        These are great properties of corners that will be useful later on in the project. As a result, I used the corner_harris function from the skimage.feature library to
+        find all the Harris corners in the image. Once I found them, I plotted them on the images as you can see below. 
+    
+    </p>
 
     <div class="image-container">
         <div>
