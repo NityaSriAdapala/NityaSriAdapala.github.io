@@ -804,6 +804,12 @@
     <h3> Class-Conditioned UNET </h3>
     <hr class="rounded">
 
+    <p> To make the results better and give us more control for image generation, we can also condition our UNet on the class of the digit 0-9. This will require 
+        adding 2 more FCBlocks to our UNet but for the class-conditioning vector, you make it a one-hot vector instead of a single scalar. Since we still want our UNet 
+        to work without it being conditioned on the class, we implement dropout where 10% of the time, we drop the class conditioning vector by setting it to 0. Training for 
+        this section will be the same as time-only, with the only difference being the conditioning vector and doing unconditional generation periodically. The sampling process 
+        is the same as part A, where we saw that conditional results aren't good unless we use classifier-free guidance so I used CFG with gamma = 5.0 for this part.</p>
+
     <div class="image-container">
         <div>
             <img src="media/125.png" alt="Epoch 5">
