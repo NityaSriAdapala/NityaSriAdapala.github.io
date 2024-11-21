@@ -733,6 +733,12 @@
         </div>
     </div>
 
+    <p> Now, we will train the model to perform denoising. The objective is to train a denoiser to denoise a noisy image, which is essentially the product of a noise level of 0.5 
+        applied to a clean image. I use the MNIST dataset via torchvision.datasets.MNIST with flags to access both the training and test sets. Then, I train only on the training 
+        set over 5 epochs. Before I create the dataloader, I shuffle the dataset and use the recommended batch size of 256. I only noise the image batches when fetched from the 
+        dataloader so that in every epoch the network will see new noised images thus improving generalization. For the model, I use the UNet architecture previously defined 
+        with recommended hidden dimension D = 128. For the optimizer, I use the Adam optimizer with learning rate of 1e-4.</p>
+
     <div class="image-container">
         <div>
             <img src="media/117.png" alt="Varying levels of noise on MNIST digits">
@@ -747,6 +753,9 @@
             <div class="image-caption">Results on digits from the test set after 5 epochs of training</div>
         </div>
     </div>
+
+    <p> Our denoiser was trained on MNIST digits noised with noise level of 0.5. Now, let's see how the denoiser performs on different noise levels that it wasn't trained for. 
+        Visualize the denoiser results on test set digits with varying levels of noise = [0.0, 0.2, 0.4, 0.5, 0.6, 0.8, 1.0] </p>
 
     <div class="image-container">
         <div>
