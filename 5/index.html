@@ -118,6 +118,9 @@
     <h3> 1.1 Implementing the Forward Process </h3>
     <hr class="rounded">
 
+    <p> A key part of diffusion is the forward process, which takes a clean image and adds noise to it. In this part, I write a function to implement this. Given a clean image, 
+        we get a noisy image at timestep t by sampling from a Gaussian. Note that the forward process is not just adding noise, we also scale the image.</p>
+
     <div class="image-container">
         <div>
             <img src="media/01.png" alt="Noisy Campanile at t=250">
