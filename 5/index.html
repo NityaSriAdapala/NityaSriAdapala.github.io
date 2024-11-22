@@ -177,6 +177,10 @@
     <h3> 1.3 One-Step Denoising </h3>
     <hr class="rounded">
 
+    <p> Now, I use a pretrained diffusion model to denoise. The actual denoiser is stage_1.unet, which is a UNet that has already been trained on a very, very large dataset of 
+        pairs of images. We can use it to recover Gaussian noise from the image. Then, we can remove this noise to recover something close to the original image. 
+        Note: this UNet is conditioned on the amount of Gaussian noise by taking timestep t as additional input.</p>
+
     <div class="image-container">
         <div>
             <img src="media/07.png" alt="Gaussian Blur Denoising at t=250">
@@ -187,6 +191,9 @@
     <hr class="rounded">
     <h3> 1.4 Iterative Denoising </h3>
     <hr class="rounded">
+
+    <p> In the previous part, the denoising UNet does a much better job of projecting the image onto the natural image manifold, but it does get worse as you add more noise. This 
+        makes sense, as the problem is much harder with more noise! However, diffusion models are designed to denoise iteratively, which is what I implement in this section. </p>
 
     <div class="image-container">
         <div>
