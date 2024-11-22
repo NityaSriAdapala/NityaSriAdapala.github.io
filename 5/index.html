@@ -507,6 +507,11 @@
     <h3> 1.7.2 Inpainting </h3>
     <hr class="rounded">
 
+    <p> We can use the same procedure to implement inpainting (following the RePaint paper). That is, given an image, x, and a binary mask, m, we can create a new image that has the same 
+        content where m is 0, but new content wherever m is 1. To do this, we can run the diffusion denoising loop. But at every step, after obtaining the image, we "force" it to have
+        the same pixels as the original images, where m is 0. Essentially, we leave everything inside the edit mask alone, but we replace everything outside the edit mask with our 
+        original image - with the correct amount of noise added for timestep, t. </p>
+
     <div class="image-container">
         <div>
             <img src="media/65.png" alt="Campanile">
@@ -586,6 +591,9 @@
     <hr class="rounded">
     <h3> 1.7.3 Text-Conditional Image-to-image Translation </h3>
     <hr class="rounded">
+
+    <p> Now, we will do the same thing as SDEdit, but guide the projection with a text prompt. This is no longer pure "projection to the natural image manifold" but also adds 
+        control using language. </p>
 
     <div class="image-container">
         <div>
