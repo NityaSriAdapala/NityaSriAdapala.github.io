@@ -237,6 +237,9 @@
     <h3> 1.5 Diffusion Model Sampling </h3>
     <hr class="rounded">
 
+    <p> Another thing we can do with the iterative_denoise function is to generate images from scratch. We can do this by setting i_start = 0 and passing in random noise. 
+        This effectively denoises pure noise. </p>
+
     <div class="image-container">
         <div>
             <img src="media/16.png" alt="Sample 1">
@@ -264,6 +267,10 @@
     <h3> 1.6 Classifier-Free Guidance (CFG) </h3>
     <hr class="rounded">
 
+    <p> In order to greatly improve image quality (at the expense of image diversity), we can use a technique called Classifier-Free Guidance.In CFG, we compute both a conditional 
+        and an unconditional noise estimate, which we use with gamma (strength of the CFG) to calculate our new noise estimate. To get an unconditional noise estimate, we can just 
+        pass an empty prompt embedding to the diffusion model. When gamma > 1, we get much higher quality images. </p>
+
     <div class="image-container">
         <div>
             <img src="media/21.png" alt="Sample 1 with CFG">
@@ -290,6 +297,12 @@
     <hr class="rounded">
     <h3> 1.7 Image-to-image Translation </h3>
     <hr class="rounded">
+
+    <p> In part 1.4, we take a real image, add noise to it, and then denoise. This effectively allows us to make edits to existing images. The more noise we add, the larger the 
+        edit will be. This works because in order to denoise an image, the diffusion model must to some extent "hallucinate" new things -- the model has to be "creative." Another 
+        way to think about it is that the denoising process "forces" a noisy image back onto the manifold of natural images. Here, I am going to take the original test image, 
+        noise it a little, and force it back onto the image manifold without any conditioning. Effectively, I am going to get an image that is similar to the test image (with 
+        a low-enough noise level). This follows the SDEdit algorithm.</p>
 
     <div class="image-container">
         <div>
@@ -384,6 +397,9 @@
     <hr class="rounded">
     <h3> 1.7.1 Editing Hand-Drawn and Web Images </h3>
     <hr class="rounded">
+
+    <p> This procedure works particularly well if we start with a nonrealistic image (e.g. painting, a sketch, some scribbles) and project it onto the natural image manifold. I
+        experiment by starting with hand-drawn or other non-realistic images and see how you can get them onto the natural image manifold in fun ways.</p>
 
     <div class="image-container">
         <div>
