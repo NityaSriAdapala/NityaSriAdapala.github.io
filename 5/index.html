@@ -76,6 +76,19 @@
     <h3> Part 0: Setup </h3>
     <hr class="rounded">
 
+    <p> For this project, I am going to use the DeepFloyd IF diffusion model. DeepFloyd is a two stage model trained by Stability AI. The first stage produces images of size 64 x 64
+        and the second stage takes the outputs of the first stage and generates images of size 256 x 256. DeepFloyd was trained as a text-to-image model, which takes text prompts as 
+        input and outputs images that are aligned with the text. Because the text encoder is very large, and barely fits on a free tier Colab GPU, I precomputed a couple of text 
+        embeddings to try. In the notebook, I instantiate DeepFloyd's stage_1 and stage_2 objects used for generation, as well as several text prompts for sample generation. Below are
+        three text prompts and their corresponding images. For the first one, I set the number of inference steps to 20. The images are detailed and very colourful but the definition 
+        of the images are not too sharp - it is still a little blurry. For the second one, I increased the number of inference steps to 40. The images' definition increased as the 
+        outlines of the shapes and figures are cleaner. The man wearing the hat seems more realistic than the previous set of images whereas the rocket ship seems more like a 2D cartoon.
+        For the third one, I decreased the number of inference steps to 5. The quality of the images decreased by a lot and the colours are very dull and muted. The images are not as
+        clear as the previous sets of images and there is some speckling across the images which makes it harder to see the key features are in the image. The objects in the image seem 
+        to be represented more abstractly and less realistically. Therefore, increasing the number of inference steps produces more detailed, bright and realistic images whereas 
+        decreasing the number of inference steps produces more abstract, dull, and less detailed images. 
+        </p>
+
     <div class="image-container">
         <div>
             <img src="media/134.png" alt="num_inference_steps = 20">
