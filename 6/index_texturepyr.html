@@ -201,6 +201,17 @@
     <h3> Part 2: Oriented pyramid </h3>
     <hr class="rounded">
 
+    <div class="image-container">
+        <div>
+            <img src="media/89.png" alt="Steerable Pyramid Decomposition">
+            <div class="image-caption"> Steerable Pyramid Decomposition </div>
+        </div>
+        <div>
+            <img src="media/90.png" alt="Steerable Pyramid Reconstruction">
+            <div class="image-caption"> Steerable Pyramid Reconstruction </div>
+        </div>
+    </div>
+
     <p> Once I got the aligned filters working, I implemented the oriented pyramid. This should be similar to the laplacian pyramid, and I essentially follow the 
         paper's diagram for how to construct it. I start with one laplace layer, and on the low frequency component, I recurse with the oriented pyramid. Here is a sample 
         image that I reconstructed using the oriented pyramid. After that, I use the pacman image to demonstrate that each of my orientations correspond to different 
@@ -225,6 +236,13 @@
     <hr class="rounded">
     <h3> Part 3: Histogram Matching </h3>
     <hr class="rounded">
+
+    <div class="image-container">
+        <div>
+            <img src="media/91.png" alt="Histogram Matching">
+            <div class="image-caption"> Histogram Matching </div>
+        </div>
+    </div>
 
     <p> With the actual pyramid working, I needed to implement the histogram matching, which is named match-histogram in the paper and is outlined in pseudocode. 
         Because this is all cumulative, I first made sure to unit test this code and all your code before. I had to make sure the histogram for some randomly initialized gaussian noise 
@@ -287,6 +305,17 @@
         the channels of the input image in the PCA color space. Next, we apply the texture synthesis algorithm (Algorithm 4) on each PCA channel. This gives an 
         output texture in the PCA color space. Therefore, the last step is to convert the output image into the RGB color space. The obtained RGB image is the 
         output of the algorithm. </p>
+
+    <div class="image-container">
+        <div>
+            <img src="media/92.png" alt="The Heeger-Bergen texture synthesis algorithm for Grayscale Images">
+            <div class="image-caption"> The Heeger-Bergen texture synthesis algorithm for Grayscale Images </div>
+        </div>
+        <div>
+            <img src="media/93.png" alt="Algorithm to compute the PCA color space">
+            <div class="image-caption"> Algorithm to compute the PCA color space </div>
+        </div>
+    </div>
 
     <div class="image-container">
         <div>
