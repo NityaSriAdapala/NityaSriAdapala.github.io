@@ -90,7 +90,7 @@
       shifting the images 'appropriately' and then averaging allows one to focus on object at different depths. In order to implement this, I first downloaded all the rectified images of the chess board from the Stanford 
       Light Field Archive. The filename consisted of the locations of each image on the grid and the coordinates of where the image is centered at. The grid is 17 x 17 with locations on the grid ranging from (0, 0) to (16, 16). 
       The middle image is at location (8, 8). Then, I take each image's coordinates and calculate the shift in the x and y directions from the middle image's coordinates. I multiply the shifts by some weight to vary the depth 
-      of focus which affects where in the image a section is more / less blurry. Using these weighted shifts, we shift the image. Finally, we averaged all the images to get the final result. To get the GIF, each frame was 
+      of focus which affects where in the image a section is more / less blurry. Using these weighted shifts, I shift the image. Finally, I averaged all the images to get the final result. To get the GIF, each frame was 
       the result of this process repeated with a range of shift weights from [-0.15, 0.65] in 0.01 intervals. </p>
 
     <div class="image-container">
@@ -161,9 +161,9 @@
     <h3> Part 3: Summary </h3>
     <hr class="rounded">
 
-    <p> From this project, I learned about how we can average images centered at different coordinates and shifted to mimic depth refocusing. Furthermore, I learned that when I average more images, I am using more information 
+    <p> From this project, I learned about how I can average images centered at different coordinates and shifted to mimic depth refocusing. Furthermore, I learned that when I average more images, I am using more information 
         to create the final image because there is data coming in from more angles, which mimics the wide aperture as the wide aperture lets more light rays in from various angles. When using a narrower aperture, the light rays
-        are more perpendicular to the sensor as we are now sampling from less angles which results in more objects (chess pieces) being in focus. This effect is mimicked by using fewer images. </p>
+        are more perpendicular to the sensor as I am now sampling from less angles which results in more objects (chess pieces) being in focus. This effect is mimicked by using fewer images. </p>
     
 </body>
 </html>
