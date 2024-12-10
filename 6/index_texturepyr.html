@@ -281,8 +281,12 @@
         the code I've implemented up until now. However, some extra considerations were needed to make this work. I needed to use wrap padding when convolving, 
         and color images need to be dealt with properly. As described in the paper, for color images, I need to transform the 3-dimensional pixel values (RGB) of my
         source image into a PCA basis in order to de-correlate and normalize the pixel values. This enables me to operate on the RGB channels independently. For extra reading 
-        into practical considerations and greater detail on pseudocode and other misc, 
-        see this link here (https://www.ipol.im/pub/art/2014/79/article_lr.pdf), but this shouldn't be required to get the basic code running. </p>
+        into practical considerations and greater detail on pseudocode and other misc, see this link here (https://www.ipol.im/pub/art/2014/79/article_lr.pdf), but 
+        this shouldn't be required to get the basic code running. The Heeger-Bergen texture synthesis algorithm for RGB color textures starts by first computing the 
+        PCA color space of the input texture. We do this because PCA considers color correlations and doesn't affect any spatial correlations. Then, we determine 
+        the channels of the input image in the PCA color space. Next, we apply the texture synthesis algorithm (Algorithm 4) on each PCA channel. This gives an 
+        output texture in the PCA color space. Therefore, the last step is to convert the output image into the RGB color space. The obtained RGB image is the 
+        output of the algorithm. </p>
 
     <div class="image-container">
         <div>
