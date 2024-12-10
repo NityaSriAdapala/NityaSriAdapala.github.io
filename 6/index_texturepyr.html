@@ -226,10 +226,10 @@
     <h3> Part 3: Histogram Matching </h3>
     <hr class="rounded">
 
-    <p> With the actual pyramid working, you will need to implement the histogram matching, which is named match-histogram in the paper and is outlined in pseudocode. 
-        Because this is all cumulative, make sure to unit test this code and all your code before. Make sure the histogram for some randomly initialized gaussian noise 
-        ends up matching the histogram of some source image of your choosing, and make sure before continuing that your oriented laplace pyramid is behaving as expected 
-        in the way it was demonstrated to work in the paper with the pac-man-like example (figure 4). </p>
+    <p> With the actual pyramid working, I needed to implement the histogram matching, which is named match-histogram in the paper and is outlined in pseudocode. 
+        Because this is all cumulative, I first made sure to unit test this code and all your code before. I had to make sure the histogram for some randomly initialized gaussian noise 
+        ends up matching the histogram of some source image. Below I have chosen some sample images and demonstrated that the histogram of the noisy image matches the histogram of 
+        the source image.</p>
 
     <div class="image-container">
         <div>
@@ -277,12 +277,12 @@
     <h3> Part 4: Full Texture Synthesis </h3>
     <hr class="rounded">
 
-    <p> Finally, you will need to implement the texture synthesis algorithm, which is also outlined in pseudocode, named match-texture. This will require you to use all
-        the code you've implemented up until now. Some extra considerations are needed to make this work. You will likely need to use same or wrap padding when convolving, 
-        and color images need to be dealt with properly. As described in the paper, for color images you will need to transform the 3-dimensional pixel values (RGB) of your
-        source image into a PCA basis in order to de-correlate and normalize the pixel values, enabling you to operate on the RGB channels independently. For extra reading 
-        into practical considerations and greater detail on pseudocode (ignore their math for the filters, the library we provided you should be all you need) and other misc, 
-        see this link here, but this shouldn't be required to get the basic code running. </p>
+    <p> Finally, I implemented the texture synthesis algorithm, which is also outlined in pseudocode, named match-texture. This required me to use all
+        the code I've implemented up until now. However, some extra considerations were needed to make this work. I needed to use wrap padding when convolving, 
+        and color images need to be dealt with properly. As described in the paper, for color images, I need to transform the 3-dimensional pixel values (RGB) of my
+        source image into a PCA basis in order to de-correlate and normalize the pixel values. This enables me to operate on the RGB channels independently. For extra reading 
+        into practical considerations and greater detail on pseudocode and other misc, 
+        see this link here (https://www.ipol.im/pub/art/2014/79/article_lr.pdf), but this shouldn't be required to get the basic code running. </p>
 
     <div class="image-container">
         <div>
@@ -294,6 +294,9 @@
             <div class="image-caption"> Synthesized Texture 1 </div>
         </div>
     </div>
+
+    <p> My algorithm didn't work so well on this image because it produces many small black dots and artifacts. This could possibly be due to not reconstructing the image 
+        correctly from the pyramid. Maybe using more orientation filters or increasing the number of scales would reduce the appearance of these artifacts. </p>
 
     <div class="image-container">
         <div>
@@ -332,14 +335,16 @@
     <h3> B&W: Hyperparameter Tuning </h3>
     <hr class="rounded">
 
-    <p> We made several design choices: operating in the spatial domain instead of the frequency domain, the kind of padding we used, the number of 
-        iterations, the number of oriented filters, etc. Ablate some of these and compare their performance. </p>
+    <p> I made several design choices: operating in the spatial domain instead of the frequency domain, the kind of padding we used, the number of 
+        iterations, the number of oriented filters, etc. so I decided to ablate some of these and compare their performance. </p>
 
     <hr class="rounded">
     <h3> Number of Iterations </h3>
     <hr class="rounded">
 
-    <p> </p>
+    <p> Increasing the number of iterations improves the output texture but too many iterations makes the texture seem like it has a regular pattern on top of the 
+        existing original texture, as can be seen by iteration 20. After multiple experimentations, I found that by around the 4th and 5th iterations, the output is most 
+        similar to the original texture. There are no noticeable differences in the output texture for very large numbers of iterations past 20. </p>
 
     <div class="image-container">
         <div>
@@ -405,7 +410,9 @@
     <h3> Number of Orientation Filters </h3>
     <hr class="rounded">
 
-    <p> </p>
+    <p> After I increased the number of orientation filters, the results improved for each iteration as the images looked more similar to the original texture. For textures that 
+        have no dominant orientation such as Texture 3, there seems to be no effect in changing the number of orientation filters. Furthermore, since more
+        angles are captured if we use more orientation filters, the images look smoother maybe because there seems to be more overlap between the filters. </p>
 
     <div class="image-container">
         <div>
@@ -494,7 +501,10 @@
     <h3> Number of Scales </h3>
     <hr class="rounded">
 
-    <p> </p>
+    <p> Varying the number of scales was by far the hyperparamater that had the most significant effect on the output texture. Increasing the number of scales improved the results
+        as they looked more closely like the input textures. It removed the blotchy effect that you see in the images where the number of scales = 1. However, for textures like
+        Texture 3 where there is no clear pattern, increasing the number of scales doesn't seem to affect it as much as textures where you can see more varied structures. Increasing the
+        scales to the maximum possible allows us to capture all the details of the original input image which results in a better output texture. </p>
 
     <div class="image-container">
         <div>
