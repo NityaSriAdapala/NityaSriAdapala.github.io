@@ -1,1 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Final Project: Lightfield Camera</title>
+    <style>
+        h1 {
+            font-family: Georgia, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        h2 {
+            font-family: Georgia, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        h3 {
+            font-family: Georgia, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        p {
+            font-family: Georgia, sans-serif;
+            margin: 20px;
+            padding: 10px;
+        }
+        ul {
+            font-family: Georgia, sans-serif;
+            margin: 20px;
+            padding: 10px;
+        }
+        .image-container {
+            display: flex;
+            justify-content: center;
+            margin: 10px;
+            align-items: center;
+        }
+        .image-container img {
+            margin: 20 auto;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+            height: 300px;
+            width: auto;
+            max-width: 100%;
+            align-items: center;
+            display: block;
+            margin: 30px;
+        }
+        .image-caption {
+            margin: 5px 0;
+            text-align: center;
+        }
+        .scaled-image {
+            width: 80%; 
+            height: auto;  
+        }
+        hr.rounded {
+          border-top: 2px solid #000;
+          border-radius: 5px;
+        } 
+    </style>
+</head>
+    
+<body>
+    <h1> Final Project Part 2: Pyramid-Based Texture Analysis/Texture </h1>
 
+    <h2> Matching and generating texture using image pyramids </h2>
+
+    <h2> Nitya Sri Adapala and Wesley Zhang </h2>
+
+    <hr class="rounded">
+    <h3> Background </h3>
+    <hr class="rounded">
+
+    <p> This project revolves around re-implementing key portions of the paper "Pyramid-Based Texture Analysis/Texture". This paper uses a slightly modified laplacian pyramid, 
+      which will decompose the image into frequency bands AND orientations in the frequency domain (can imagine splitting the plotted frequency domain amplitudes into our circular 
+      frequency bands AND quadrants). By using histogram matching, we are able to generate oriented textures matching the source image. By matching histograms of not just the 
+      source and noisy images, but also the oriented laplace pyramid, we are able to generate a texture image which has actual structure to it instead of just pixels with similar 
+      values. </p>
+
+    <hr class="rounded">
+    <h3> Overview </h3>
+    <hr class="rounded">
+
+    <p> The goal of this project is to try and re-create the basic results of this paper in mimicing a 2D texture. You will lean on your previous code for the laplacian pyramid, 
+      making small modifications to get orientation bands. You will also implement the algorithm described with pseudocode in the paper. If everything goes right, you will be 
+      able to showcase your ability to match textures!</p>
+
+    <hr class="rounded">
+    <h3> Part 1: How the oriented filters work when convolved on an image </h3>
+    <hr class="rounded">
+
+    <p> </p>
+
+    <div class="image-container">
+        <div>
+            <img src="media/11.png" alt="Horizontal">
+            <div class="image-caption"> Horizontal </div>
+        </div>
+        <div>
+            <img src="media/12.png" alt="Left Diagonal">
+            <div class="image-caption"> Left Diagonal </div>
+        </div>
+        <div>
+            <img src="media/13.png" alt="Vertical">
+            <div class="image-caption"> Vertical </div>
+        </div>
+        <div>
+            <img src="media/14.png" alt="Right Diagonal">
+            <div class="image-caption"> Right Diagonal </div>
+        </div>
+    </div>
+
+    <hr class="rounded">
+    <h3> Part 2: Oriented pyramid </h3>
+    <hr class="rounded">
+
+    <p> </p>
+
+    <hr class="rounded">
+    <h3> Part 3: Histogram Matching </h3>
+    <hr class="rounded">
+
+    <p> </p>
+
+    <hr class="rounded">
+    <h3> Part 4: Full Texture Synthesis </h3>
+    <hr class="rounded">
+
+    <p> </p>
+
+    <hr class="rounded">
+    <h3> B&W: Hyperparameter Tuning </h3>
+    <hr class="rounded">
+
+    <p> </p>
+
+    <hr class="rounded">
+    <h4> Number of Iterations </h4>
+    <hr class="rounded">
+
+    <p> </p>
+
+    <hr class="rounded">
+    <h4> Number of Orientation Filters </h4>
+    <hr class="rounded">
+
+    <p> </p>
+
+    <hr class="rounded">
+    <h4> Number of Scales </h4>
+    <hr class="rounded">
+
+    <p> </p>
+    
+</body>
+</html>
