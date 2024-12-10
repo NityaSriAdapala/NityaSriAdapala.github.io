@@ -93,23 +93,98 @@
 
     <div class="image-container">
         <div>
-            <img src="media/11.png" alt="Horizontal">
-            <div class="image-caption"> Horizontal </div>
+            <img src="media/11.png" alt="Oriented Filters">
+            <div class="image-caption"> Oriented Filters </div>
         </div>
     </div>
     
     <div class="image-container">
         <div>
-            <img src="media/12.png" alt="Left Diagonal">
-            <div class="image-caption"> Left Diagonal </div>
+            <img src="media/12.png" alt="Pacman">
+            <div class="image-caption"> Pacman </div>
         </div>
         <div>
-            <img src="media/13.png" alt="Vertical">
-            <div class="image-caption"> Vertical </div>
+            <img src="media/14.png" alt="Combined Response Magnitude of Pacman">
+            <div class="image-caption"> Combined Response Magnitude of Pacman </div>
+        </div>
+    </div>
+    
+    <div class="image-container">
+        <div>
+            <img src="media/13.png" alt="Oriented Filters convolved on Pacman">
+            <div class="image-caption"> Oriented Filters convolved on Pacman </div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div>
+            <img src="media/15.png" alt="Texture 1">
+            <div class="image-caption"> Texture 1 </div>
         </div>
         <div>
-            <img src="media/14.png" alt="Right Diagonal">
-            <div class="image-caption"> Right Diagonal </div>
+            <img src="media/17.png" alt="Combined Response Magnitude of Texture 1">
+            <div class="image-caption"> Combined Response Magnitude of Texture 1 </div>
+        </div>
+    </div>
+    
+    <div class="image-container">
+        <div>
+            <img src="media/16.png" alt="Oriented Filters convolved on Texture 1">
+            <div class="image-caption"> Oriented Filters convolved on Texture 1 </div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div>
+            <img src="media/18.png" alt="Texture 2">
+            <div class="image-caption"> Texture 2 </div>
+        </div>
+        <div>
+            <img src="media/20.png" alt="Combined Response Magnitude of Texture 2">
+            <div class="image-caption"> Combined Response Magnitude of Texture 2 </div>
+        </div>
+    </div>
+    
+    <div class="image-container">
+        <div>
+            <img src="media/19.png" alt="Oriented Filters convolved on Texture 2">
+            <div class="image-caption"> Oriented Filters convolved on Texture 2 </div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div>
+            <img src="media/21.png" alt="Texture 3">
+            <div class="image-caption"> Texture 3 </div>
+        </div>
+        <div>
+            <img src="media/23.png" alt="Combined Response Magnitude of Texture 3">
+            <div class="image-caption"> Combined Response Magnitude of Texture 3 </div>
+        </div>
+    </div>
+    
+    <div class="image-container">
+        <div>
+            <img src="media/22.png" alt="Oriented Filters convolved on Texture 3">
+            <div class="image-caption"> Oriented Filters convolved on Texture 3 </div>
+        </div>
+    </div>
+
+     <div class="image-container">
+        <div>
+            <img src="media/24.png" alt="Texture 4">
+            <div class="image-caption"> Texture 4 </div>
+        </div>
+        <div>
+            <img src="media/26.png" alt="Combined Response Magnitude of Texture 4">
+            <div class="image-caption"> Combined Response Magnitude of Texture 4 </div>
+        </div>
+    </div>
+    
+    <div class="image-container">
+        <div>
+            <img src="media/25.png" alt="Oriented Filters convolved on Texture 4">
+            <div class="image-caption"> Oriented Filters convolved on Texture 4 </div>
         </div>
     </div>
 
@@ -120,6 +195,24 @@
     <p> Once you have the aligned filters working, you will need to implement the oriented pyramid. This should be similar to the laplacian pyramid, and you can follow the 
         paper's diagram for how to construct it. You will start with one laplace layer, and on the low frequency component, you will recurse with the oriented pyramid.</p>
 
+    <div class="image-container">
+        <div>
+            <img src="media/27.png" alt="Original Texture 1">
+            <div class="image-caption"> Original Texture 1 </div>
+        </div>
+        <div>
+            <img src="media/28.png" alt="Reconstructed Texture 1 using Oriented Pyramid">
+            <div class="image-caption"> Reconstructed Texture 1 using Oriented Pyramid </div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div>
+            <img src="media/29.png" alt="Oriented Pyramid / Steerable pyramid subband images for Pacman">
+            <div class="image-caption"> Oriented Pyramid / Steerable pyramid subband images for Pacman</div>
+        </div>
+    </div>
+    
     <hr class="rounded">
     <h3> Part 3: Histogram Matching </h3>
     <hr class="rounded">
@@ -128,6 +221,48 @@
         Because this is all cumulative, make sure to unit test this code and all your code before. Make sure the histogram for some randomly initialized gaussian noise 
         ends up matching the histogram of some source image of your choosing, and make sure before continuing that your oriented laplace pyramid is behaving as expected 
         in the way it was demonstrated to work in the paper with the pac-man-like example (figure 4). </p>
+
+    <div class="image-container">
+        <div>
+            <img src="media/30.png" alt="Texture 1">
+            <div class="image-caption"> Texture 1</div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div>
+            <img src="media/31.png" alt="Texture 1 Histograms">
+            <div class="image-caption"> Texture 1 Histograms</div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div>
+            <img src="media/32.png" alt="Texture 2">
+            <div class="image-caption"> Texture 2</div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div>
+            <img src="media/33.png" alt="Texture 2 Histograms">
+            <div class="image-caption"> Texture 2 Histograms</div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div>
+            <img src="media/34.png" alt="Texture 3">
+            <div class="image-caption"> Texture 3</div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div>
+            <img src="media/35.png" alt="Texture 3 Histograms">
+            <div class="image-caption"> Texture 3 Histograms</div>
+        </div>
+    </div>
 
     <hr class="rounded">
     <h3> Part 4: Full Texture Synthesis </h3>
@@ -139,6 +274,50 @@
         source image into a PCA basis in order to de-correlate and normalize the pixel values, enabling you to operate on the RGB channels independently. For extra reading 
         into practical considerations and greater detail on pseudocode (ignore their math for the filters, the library we provided you should be all you need) and other misc, 
         see this link here, but this shouldn't be required to get the basic code running. </p>
+
+    <div class="image-container">
+        <div>
+            <img src="media/36.png" alt="Original Texture 1">
+            <div class="image-caption"> Original Texture 1 </div>
+        </div>
+        <div>
+            <img src="media/37.png" alt="Synthesized Texture 1">
+            <div class="image-caption"> Synthesized Texture 1 </div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div>
+            <img src="media/38.png" alt="Original Texture 2">
+            <div class="image-caption"> Original Texture 2 </div>
+        </div>
+        <div>
+            <img src="media/39.png" alt="Synthesized Texture 2">
+            <div class="image-caption"> Synthesized Texture 2 </div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div>
+            <img src="media/40.png" alt="Original Texture 3">
+            <div class="image-caption"> Original Texture 3 </div>
+        </div>
+        <div>
+            <img src="media/41.png" alt="Synthesized Texture 3">
+            <div class="image-caption"> Synthesized Texture 3 </div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div>
+            <img src="media/42.png" alt="Original Texture 4">
+            <div class="image-caption"> Original Texture 4 </div>
+        </div>
+        <div>
+            <img src="media/43.png" alt="Synthesized Texture 4">
+            <div class="image-caption"> Synthesized Texture 4 </div>
+        </div>
+    </div>
 
     <hr class="rounded">
     <h3> B&W: Hyperparameter Tuning </h3>
@@ -153,17 +332,236 @@
 
     <p> </p>
 
+    <div class="image-container">
+        <div>
+            <img src="media/44.png" alt="Original Texture 1">
+            <div class="image-caption"> Original Texture 1 </div>
+        </div>
+        <div>
+            <img src="media/45.png" alt="Iterations: 5">
+            <div class="image-caption"> Iterations: 5 </div>
+        </div>
+        <div>
+            <img src="media/46.png" alt="Iterations: 20">
+            <div class="image-caption"> Iterations: 20 </div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div>
+            <img src="media/47.png" alt="Original Texture 2">
+            <div class="image-caption"> Original Texture 1 </div>
+        </div>
+        <div>
+            <img src="media/48.png" alt="Iterations: 5">
+            <div class="image-caption"> Iterations: 5 </div>
+        </div>
+        <div>
+            <img src="media/49.png" alt="Iterations: 20">
+            <div class="image-caption"> Iterations: 20 </div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div>
+            <img src="media/50.png" alt="Original Texture 3">
+            <div class="image-caption"> Original Texture 1 </div>
+        </div>
+        <div>
+            <img src="media/51.png" alt="Iterations: 5">
+            <div class="image-caption"> Iterations: 5 </div>
+        </div>
+        <div>
+            <img src="media/52.png" alt="Iterations: 20">
+            <div class="image-caption"> Iterations: 20 </div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div>
+            <img src="media/53.png" alt="Original Texture 4">
+            <div class="image-caption"> Original Texture 1 </div>
+        </div>
+        <div>
+            <img src="media/54.png" alt="Iterations: 5">
+            <div class="image-caption"> Iterations: 5 </div>
+        </div>
+        <div>
+            <img src="media/55.png" alt="Iterations: 20">
+            <div class="image-caption"> Iterations: 20 </div>
+        </div>
+    </div>
+
     <hr class="rounded">
     <h4> Number of Orientation Filters </h4>
     <hr class="rounded">
 
     <p> </p>
 
+    <div class="image-container">
+        <div>
+            <img src="media/56.png" alt="Increased Number of Orientation Filters">
+            <div class="image-caption"> Increased Number of Orientation Filters</div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div>
+            <img src="media/57.png" alt="Original Texture 1">
+            <div class="image-caption"> Original Texture 1 </div>
+        </div>
+        <div>
+            <img src="media/58.png" alt="Iterations: 5">
+            <div class="image-caption"> Iterations: 5 </div>
+        </div>
+        <div>
+            <img src="media/59.png" alt="Iterations: 10">
+            <div class="image-caption"> Iterations: 10 </div>
+        </div>
+        <div>
+            <img src="media/60.png" alt="Iterations: 20">
+            <div class="image-caption"> Iterations: 20 </div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div>
+            <img src="media/61.png" alt="Original Texture 2">
+            <div class="image-caption"> Original Texture 2 </div>
+        </div>
+        <div>
+            <img src="media/62.png" alt="Iterations: 5">
+            <div class="image-caption"> Iterations: 5 </div>
+        </div>
+        <div>
+            <img src="media/63.png" alt="Iterations: 10">
+            <div class="image-caption"> Iterations: 10 </div>
+        </div>
+        <div>
+            <img src="media/64.png" alt="Iterations: 20">
+            <div class="image-caption"> Iterations: 20 </div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div>
+            <img src="media/65.png" alt="Original Texture 3">
+            <div class="image-caption"> Original Texture 3 </div>
+        </div>
+        <div>
+            <img src="media/66.png" alt="Iterations: 5">
+            <div class="image-caption"> Iterations: 5 </div>
+        </div>
+        <div>
+            <img src="media/67.png" alt="Iterations: 10">
+            <div class="image-caption"> Iterations: 10 </div>
+        </div>
+        <div>
+            <img src="media/68.png" alt="Iterations: 20">
+            <div class="image-caption"> Iterations: 20 </div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div>
+            <img src="media/69.png" alt="Original Texture 4">
+            <div class="image-caption"> Original Texture 4</div>
+        </div>
+        <div>
+            <img src="media/70.png" alt="Iterations: 5">
+            <div class="image-caption"> Iterations: 5 </div>
+        </div>
+        <div>
+            <img src="media/71.png" alt="Iterations: 10">
+            <div class="image-caption"> Iterations: 10 </div>
+        </div>
+        <div>
+            <img src="media/72.png" alt="Iterations: 20">
+            <div class="image-caption"> Iterations: 20 </div>
+        </div>
+    </div>
+    
     <hr class="rounded">
     <h4> Number of Scales </h4>
     <hr class="rounded">
 
     <p> </p>
+
+    <div class="image-container">
+        <div>
+            <img src="media/73.png" alt="Original Texture 1">
+            <div class="image-caption"> Original Texture 1</div>
+        </div>
+        <div>
+            <img src="media/74.png" alt="Scales: 1">
+            <div class="image-caption"> Scales: 1 </div>
+        </div>
+        <div>
+            <img src="media/75.png" alt="Scales: 4">
+            <div class="image-caption"> Scales: 4 </div>
+        </div>
+        <div>
+            <img src="media/76.png" alt="Scales: 7">
+            <div class="image-caption"> Scales: 7 </div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div>
+            <img src="media/77.png" alt="Original Texture 2">
+            <div class="image-caption"> Original Texture 2</div>
+        </div>
+        <div>
+            <img src="media/78.png" alt="Scales: 1">
+            <div class="image-caption"> Scales: 1 </div>
+        </div>
+        <div>
+            <img src="media/79.png" alt="Scales: 4">
+            <div class="image-caption"> Scales: 4 </div>
+        </div>
+        <div>
+            <img src="media/80.png" alt="Scales: 7">
+            <div class="image-caption"> Scales: 7 </div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div>
+            <img src="media/81.png" alt="Original Texture 3">
+            <div class="image-caption"> Original Texture 3</div>
+        </div>
+        <div>
+            <img src="media/82.png" alt="Scales: 1">
+            <div class="image-caption"> Scales: 1 </div>
+        </div>
+        <div>
+            <img src="media/83.png" alt="Scales: 4">
+            <div class="image-caption"> Scales: 4 </div>
+        </div>
+        <div>
+            <img src="media/84.png" alt="Scales: 7">
+            <div class="image-caption"> Scales: 7 </div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div>
+            <img src="media/85.png" alt="Original Texture 4">
+            <div class="image-caption"> Original Texture 4</div>
+        </div>
+        <div>
+            <img src="media/86.png" alt="Scales: 1">
+            <div class="image-caption"> Scales: 1 </div>
+        </div>
+        <div>
+            <img src="media/87.png" alt="Scales: 4">
+            <div class="image-caption"> Scales: 4 </div>
+        </div>
+        <div>
+            <img src="media/88.png" alt="Scales: 7">
+            <div class="image-caption"> Scales: 7 </div>
+        </div>
+    </div>
     
 </body>
 </html>
