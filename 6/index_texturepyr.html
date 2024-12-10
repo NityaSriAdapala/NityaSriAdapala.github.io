@@ -64,7 +64,7 @@
 
     <h2> Matching and generating texture using image pyramids </h2>
 
-    <h2> Nitya Sri Adapala and Wesley Zhang </h2>
+    <h2> Nitya Sri Adapala </h2>
 
     <hr class="rounded">
     <h3> Background </h3>
@@ -97,6 +97,15 @@
             <div class="image-caption"> Oriented Filters </div>
         </div>
     </div>
+
+    <p> Each oriented filter will respond to certain edges and features at a specific orientation. With sp3_filters, we have 4 orientations (0°, 45°, 90°, 135°). The first 
+        orientation filter at 0° will highlight the changes in the y direction and so it will highlight the horizontal components of the edges in an image. Similarly, the 90° 
+        orientation filter will highlight the changes in the x direction and so it will highlight the vertical component of the edges in an image. The filters are called
+        steerable because any linear combination of these basis filters can create any orientation you want. The sum of all oriented filters for a given band is the same 
+        as a standard laplacian band pass. Each of the filters are already by default bandpass filters because they each capture only a specific range of frequencies. When 
+        you sum all the orientation filters together, they form a circular band because they each capture different angles in a circle. In the frequency space, this is what a
+        Laplacian band pass filter looks like. Here are some sample images convolved with each of the oriented filters and the combined response magnitude image which preserves 
+        all the components at different orientations. </p>
     
     <div class="image-container">
         <div>
@@ -192,8 +201,10 @@
     <h3> Part 2: Oriented pyramid </h3>
     <hr class="rounded">
 
-    <p> Once you have the aligned filters working, you will need to implement the oriented pyramid. This should be similar to the laplacian pyramid, and you can follow the 
-        paper's diagram for how to construct it. You will start with one laplace layer, and on the low frequency component, you will recurse with the oriented pyramid.</p>
+    <p> Once I got the aligned filters working, I implemented the oriented pyramid. This should be similar to the laplacian pyramid, and I essentially follow the 
+        paper's diagram for how to construct it. I start with one laplace layer, and on the low frequency component, I recurse with the oriented pyramid. Here is a sample 
+        image that I reconstructed using the oriented pyramid. After that, I show the pacman image to demonstrate that each of my orientations correspond to different 
+        oriented frequencies. </p>
 
     <div class="image-container">
         <div>
@@ -206,11 +217,9 @@
         </div>
     </div>
 
-    <div class="image-container">
-        <div>
-            <img src="media/29.png" alt="Oriented Pyramid / Steerable pyramid subband images for Pacman">
-            <div class="image-caption"> Oriented Pyramid / Steerable pyramid subband images for Pacman</div>
-        </div>
+    <div>
+        <img src="media/29.png" alt="Oriented Pyramid / Steerable pyramid subband images for Pacman">
+        <div class="image-caption"> Oriented Pyramid / Steerable pyramid subband images for Pacman</div>
     </div>
     
     <hr class="rounded">
